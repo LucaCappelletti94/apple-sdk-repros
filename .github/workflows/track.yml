@@ -20,6 +20,7 @@ jobs:
         runner: [macos-26, macos-15, xcode-27]
         method:
           - LocalAuthentication/newInstanceId-newCommandId-race
+          - LocalAuthentication/biometryType-domainState-cache
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4

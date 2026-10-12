@@ -24,7 +24,9 @@ jobs:
           done
 
       - name: Result-builder regression tests
-        run: sh tests/make-result-test.sh
+        run: |
+          sh tests/make-result-test.sh
+          sh tests/make-race-window-result-test.sh
 
       - name: Every repro.m compiles
         run: |

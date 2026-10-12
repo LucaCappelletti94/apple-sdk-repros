@@ -1,0 +1,35 @@
+{
+  "platform": "macos-host-apple-silicon",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "dynamic-window",
+  "runs": [
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 416,
+      "overlaps": 281
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 396,
+      "overlaps": 256
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 409,
+      "overlaps": 239
+    }
+  ],
+  "verdict": "window-detected",
+  "raw_output": "2026-10-12T22:20:09Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nreaders=8 writers=4 seconds=5 calls=416 overlaps=281\nreaders=8 writers=4 seconds=5 calls=396 overlaps=256\nreaders=8 writers=4 seconds=5 calls=409 overlaps=239\n2026-10-12T22:20:25Z\n"
+}

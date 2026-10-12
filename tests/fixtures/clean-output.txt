@@ -1,0 +1,8 @@
+2026-01-01T00:00:00Z
+ProductName:		macOS
+ProductVersion:		99.0
+BuildVersion:		99Z99
+direct: expected 16000000 increments, counter advanced 16000000, lost 0
+direct: expected 16000000 increments, counter advanced 16000000, lost 0
+new: expected 24000 increments, counter advanced 24000, lost 0
+2026-01-01T00:01:00Z

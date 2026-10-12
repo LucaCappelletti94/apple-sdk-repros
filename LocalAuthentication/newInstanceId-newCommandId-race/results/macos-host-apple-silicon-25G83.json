@@ -1,0 +1,55 @@
+{
+  "platform": "macos-host-apple-silicon",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "runs": [
+    {
+      "mode": "direct",
+      "expected": 16000000,
+      "advanced": 16000000,
+      "lost": 0
+    },
+    {
+      "mode": "direct",
+      "expected": 16000000,
+      "advanced": 1564740,
+      "lost": 14435260
+    },
+    {
+      "mode": "direct",
+      "expected": 16000000,
+      "advanced": 1639281,
+      "lost": 14360719
+    },
+    {
+      "mode": "direct",
+      "expected": 16000000,
+      "advanced": 1571119,
+      "lost": 14428881
+    },
+    {
+      "mode": "new",
+      "expected": 24000,
+      "advanced": 23999,
+      "lost": 1
+    },
+    {
+      "mode": "new",
+      "expected": 24000,
+      "advanced": 23999,
+      "lost": 1
+    },
+    {
+      "mode": "new",
+      "expected": 24000,
+      "advanced": 24000,
+      "lost": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-12T15:40:30Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\ndirect: expected 16000000 increments, counter advanced 16000000, lost 0\ndirect: expected 16000000 increments, counter advanced 1564740, lost 14435260\ndirect: expected 16000000 increments, counter advanced 1639281, lost 14360719\ndirect: expected 16000000 increments, counter advanced 1571119, lost 14428881\nnew: expected 24000 increments, counter advanced 23999, lost 1\nnew: expected 24000 increments, counter advanced 23999, lost 1\nnew: expected 24000 increments, counter advanced 24000, lost 0\n2026-10-12T15:57:06Z\n"
+}

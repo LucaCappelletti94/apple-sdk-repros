@@ -18,37 +18,26 @@ jobs:
       fail-fast: false
       matrix:
         runner: [macos-26, macos-15, xcode-27]
+        method:
+          - LocalAuthentication/newInstanceId-newCommandId-race
+          - LocalAuthentication/biometryType-domainState-cache
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run the LAContext counter race repro
-        working-directory: LocalAuthentication/newInstanceId-newCommandId-race
-        run: |
-          clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro
-          {
-            date -u +%Y-%m-%dT%H:%M:%SZ
-            sw_vers
-            ./repro direct 1 16000000
-            for i in 1 2 3; do ./repro direct 16 1000000; done
-            for i in 1 2 3; do ./repro new 8 3000; done
-            date -u +%Y-%m-%dT%H:%M:%SZ
-          } | tee output.txt
-
-      - name: Record the result
-        working-directory: LocalAuthentication/newInstanceId-newCommandId-race
+      - name: Run the reproduction and record the result
+        working-directory: ${{ matrix.method }}
         run: |
           xcode_version=$(xcodebuild -version | head -1 | awk '{print $2}')
-          ../../scripts/make-result.sh "gh-actions-${{ matrix.runner }}" output.txt results "$xcode_version"
-          rm output.txt
+          ./run.sh "gh-actions-${{ matrix.runner }}" "$xcode_version"
 
       - name: Commit the result if it changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add LocalAuthentication/newInstanceId-newCommandId-race/results
+          git add "${{ matrix.method }}/results"
           git diff --cached --quiet && exit 0
-          git commit -m "Track newInstanceId/newCommandId race on ${{ matrix.runner }}"
+          git commit -m "Track ${{ matrix.method }} on ${{ matrix.runner }}"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main && git push origin HEAD:main && break

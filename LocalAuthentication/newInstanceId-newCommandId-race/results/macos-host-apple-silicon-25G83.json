@@ -6,6 +6,7 @@
   },
   "xcode_version": "27.0",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "fault",
   "runs": [
     {
       "mode": "direct",

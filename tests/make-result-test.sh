@@ -22,6 +22,7 @@ check() {
     file=$(ls "$dest"/*.json)
     got_verdict=$(python3 -c "import json; print(json.load(open('$file'))['verdict'])")
     got_lines=$(python3 -c "import json; print(len(json.load(open('$file'))['runs']))")
+    got_strength=$(python3 -c "import json; print(json.load(open('$file'))['strength'])")
 
     if [ "$got_verdict" != "$expect_verdict" ]; then
         echo "FAIL $fixture: expected verdict '$expect_verdict', got '$got_verdict'" >&2
@@ -29,8 +30,11 @@ check() {
     elif [ "$got_lines" != "$expect_lines" ]; then
         echo "FAIL $fixture: expected $expect_lines parsed result lines, got $got_lines" >&2
         fail=1
+    elif [ "$got_strength" != "fault" ]; then
+        echo "FAIL $fixture: expected strength 'fault', got '$got_strength'" >&2
+        fail=1
     else
-        echo "ok $fixture: verdict=$got_verdict, $got_lines result lines"
+        echo "ok $fixture: verdict=$got_verdict, strength=$got_strength, $got_lines result lines"
     fi
 }
 

@@ -35,3 +35,8 @@ jobs:
             clang -fsyntax-only -fobjc-arc -framework Foundation -framework LocalAuthentication "$repro" || status=1
           done < <(find . -name repro.m -print0)
           exit $status
+
+      - name: README sitemap is up to date
+        run: |
+          ./scripts/make-sitemap.sh
+          git diff --exit-code README.md

@@ -1,0 +1,35 @@
+{
+  "platform": "macos-vm-tart-macos-tahoe-base",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": null,
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "dynamic-window",
+  "runs": [
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 957,
+      "overlaps": 560
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 440,
+      "overlaps": 294
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 440,
+      "overlaps": 282
+    }
+  ],
+  "verdict": "window-detected",
+  "raw_output": "2026-10-12T22:48:32Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nreaders=8 writers=4 seconds=5 calls=957 overlaps=560\nreaders=8 writers=4 seconds=5 calls=440 overlaps=294\nreaders=8 writers=4 seconds=5 calls=440 overlaps=282\n2026-10-12T22:48:51Z\n"
+}

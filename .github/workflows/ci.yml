@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+
+jobs:
+  check:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install shellcheck
+        run: brew install shellcheck
+
+      - name: Shell syntax and lint
+        run: |
+          set -e
+          for f in scripts/*.sh tests/*.sh; do
+            echo "checking $f"
+            bash -n "$f"
+            shellcheck "$f"
+          done
+
+      - name: make-result.sh regression tests
+        run: sh tests/make-result-test.sh
+
+      - name: Every repro.m compiles
+        run: |
+          set -e
+          status=0
+          while IFS= read -r -d '' repro; do
+            echo "compiling $repro"
+            clang -fsyntax-only -fobjc-arc -framework Foundation -framework LocalAuthentication "$repro" || status=1
+          done < <(find . -name repro.m -print0)
+          exit $status

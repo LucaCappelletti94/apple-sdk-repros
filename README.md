@@ -5,3 +5,10 @@
 Runnable reproductions of soundness defects in Apple SDK frameworks, rerun on each new macOS release to track Apple's fixes.
 
 One directory per method or bug, each with a standalone `repro.m`, a `README.md` naming the Apple Feedback ID and what the repro proves, and `results/` holding one dated record per platform and exact OS build. `.github/workflows/track.yml` reruns every tracked repro monthly on the macOS majors still receiving Apple security patches and commits a fresh result when one changes. `scripts/run-in-tart.sh` runs the same repros against macOS majors GitHub's hosted runners don't offer, using [tart](https://tart.run/).
+
+<!-- sitemap:start -->
+| Framework | Method | Status | Feedback |
+|---|---|---|---|
+| LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | reproduced | FB25157108 |
+<!-- sitemap:end -->
+

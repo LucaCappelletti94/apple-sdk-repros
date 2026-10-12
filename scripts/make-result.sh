@@ -3,9 +3,11 @@
 #
 # Turns a repro's raw stdout (expects `sw_vers` lines and `direct`/`new`
 # result lines in the shape the LocalAuthentication repros print) into one
-# results/<platform>-<build>.json record. Verdict is `reproduced` if any
-# `new` line lost an increment, `not-reproduced` if every `new` and the
-# single-threaded `direct 1 ...` control line lost none, `inconclusive`
+# results/<platform>-<build>.json record, at `fault` strength (see
+# EVIDENCE.md): these runs either show the actual wrong answer or they
+# don't, there is no weaker claim being made. Verdict is `reproduced` if
+# any `new` line lost an increment, `not-reproduced` if every `new` and
+# the single-threaded `direct 1 ...` control line lost none, `inconclusive`
 # otherwise (for example if the control itself lost something).
 set -eu
 
@@ -64,6 +66,7 @@ record = {
     "os": {"product_version": product_version, "build": build},
     "xcode_version": xcode_version or None,
     "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+    "strength": "fault",
     "runs": results,
     "verdict": verdict,
     "raw_output": text,

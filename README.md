@@ -9,6 +9,6 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 <!-- sitemap:start -->
 | Framework | Method | Status | Feedback |
 |---|---|---|---|
-| LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | reproduced | FB25157108 |
+| LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
 <!-- sitemap:end -->
 

@@ -17,13 +17,13 @@ jobs:
       - name: Shell syntax and lint
         run: |
           set -e
-          for f in scripts/*.sh tests/*.sh; do
+          for f in scripts/*.sh tests/*.sh */*/run.sh; do
             echo "checking $f"
             bash -n "$f"
             shellcheck "$f"
           done
 
-      - name: make-result.sh regression tests
+      - name: Result-builder regression tests
         run: sh tests/make-result-test.sh
 
       - name: Every repro.m compiles

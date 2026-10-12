@@ -15,6 +15,7 @@ python3 - "$root" <<'PYEOF'
 import glob, json, os, re, sys
 
 root = sys.argv[1]
+STRENGTH_ORDER = ["dynamic-window", "fault"]  # weakest to strongest of what results/ can hold
 rows = []
 
 for readme in sorted(glob.glob(os.path.join(root, "*", "*", "README.md"))):
@@ -26,19 +27,21 @@ for readme in sorted(glob.glob(os.path.join(root, "*", "*", "README.md"))):
     m = re.search(r"Apple Feedback:\s*(FB\d+)", text)
     fb = m.group(1) if m else "none filed"
 
-    verdicts = set()
+    by_strength = {}
     for result_path in sorted(glob.glob(os.path.join(method_dir, "results", "*.json"))):
         with open(result_path) as f:
-            verdicts.add(json.load(f)["verdict"])
+            r = json.load(f)
+        by_strength.setdefault(r["strength"], set()).add(r["verdict"])
 
-    if not verdicts:
+    if not by_strength:
         status = "no results yet"
-    elif "reproduced" in verdicts:
-        status = "reproduced"
-    elif verdicts == {"not-reproduced"}:
-        status = "not reproduced"
     else:
-        status = "inconclusive"
+        max_strength = max(by_strength, key=lambda s: STRENGTH_ORDER.index(s) if s in STRENGTH_ORDER else -1)
+        verdicts = by_strength[max_strength]
+        # a verdict that isn't phrased as a negative ("not-...", "no-...") is the
+        # more newsworthy one to lead with when several runs disagree
+        headline = next((v for v in sorted(verdicts) if not v.startswith(("not-", "no-"))), sorted(verdicts)[0])
+        status = f"{max_strength}: {headline}"
 
     title = text.splitlines()[0].lstrip("# ").strip()
     rows.append((framework, title, method, fb, status))

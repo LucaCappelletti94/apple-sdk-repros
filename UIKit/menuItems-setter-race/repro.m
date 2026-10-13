@@ -1,7 +1,5 @@
 // UIKit links on the Mac only from the SDK's iOSSupport slice.
-// clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot <MacOSX.sdk>
-//   -iframework <MacOSX.sdk>/System/iOSSupport/System/Library/Frameworks
-//   -framework Foundation -framework UIKit repro.m -o repro
+// clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro
 // ./repro 1000        8 threads each call setMenuItems: 1000 times with a fresh value
 // ./repro 5000 warm   control: 5000 sequential single-threaded sets
 #import <Foundation/Foundation.h>

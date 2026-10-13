@@ -9,8 +9,8 @@
 // already-safe and is resolved once, before the threads start. The class and selectors
 // go through the ObjC runtime, matching UIKit/sharedPrintController-lazy-init.
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
 #import <objc/message.h>
+#import <objc/runtime.h>
 #import <pthread.h>
 #import <string.h>
 

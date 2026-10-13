@@ -4,8 +4,8 @@
 // probe is a real NSArray: the property is copy and the setter calls -copyWithZone:, which a plain NSObject does not implement
 // the shared instance is resolved once before the threads start, its lazy init being a separate finding; only the setter races here
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
 #import <objc/message.h>
+#import <objc/runtime.h>
 #import <pthread.h>
 
 #define THREADS 8
@@ -21,7 +21,7 @@ static void *worker(void *arg) {
     long rounds = (long)arg;
     for (long r = 0; r < rounds; r++) {
         @autoreleasepool {
-            set_items(@[[[NSObject alloc] init]]);
+            set_items(@[ [[NSObject alloc] init] ]);
         }
     }
     return NULL;
@@ -49,7 +49,7 @@ int main(int argc, char **argv) {
         if (warm) {
             for (long r = 0; r < rounds; r++) {
                 @autoreleasepool {
-                    set_items(@[[[NSObject alloc] init]]);
+                    set_items(@[ [[NSObject alloc] init] ]);
                 }
             }
         } else {

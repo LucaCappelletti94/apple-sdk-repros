@@ -6,8 +6,8 @@
 // so two racing setters can each release the same old value.
 // Resolved through the ObjC runtime, the implementation lives in the PrintKitUI binary, not in a header.
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
 #import <objc/message.h>
+#import <objc/runtime.h>
 #import <pthread.h>
 #import <stdatomic.h>
 #include <stdlib.h>

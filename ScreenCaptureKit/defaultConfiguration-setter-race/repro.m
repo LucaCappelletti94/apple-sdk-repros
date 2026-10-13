@@ -9,8 +9,8 @@
 #import <objc/message.h>
 #import <pthread.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define THREADS 8
 static SCContentSharingPicker *picker;
@@ -21,7 +21,7 @@ static void *worker(void *arg) {
     for (int r = 0; r < rounds; r++) {
         @autoreleasepool {
             ((void (*)(id, SEL, id))objc_msgSend)(picker, set_sel,
-                [[SCContentSharingPickerConfiguration alloc] init]);
+                                                  [[SCContentSharingPickerConfiguration alloc] init]);
         }
     }
     return NULL;
@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
             for (int r = 0; r < rounds; r++)
                 @autoreleasepool {
                     ((void (*)(id, SEL, id))objc_msgSend)(picker, set_sel,
-                        [[SCContentSharingPickerConfiguration alloc] init]);
+                                                          [[SCContentSharingPickerConfiguration alloc] init]);
                 }
         } else {
             pthread_t t[THREADS];

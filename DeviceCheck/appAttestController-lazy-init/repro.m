@@ -11,8 +11,8 @@
 //
 // Ported unchanged from the objc2.upstreams/safe-device-check session's
 // upstream/fb-device-check/race.m.
-#import <Foundation/Foundation.h>
 #import <DeviceCheck/DeviceCheck.h>
+#import <Foundation/Foundation.h>
 #import <pthread.h>
 #import <stdatomic.h>
 

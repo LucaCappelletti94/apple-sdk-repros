@@ -6,8 +6,8 @@
 // The getter's unguarded slow path runs exactly once per process, so each invocation is one trial.
 // Resolved through the ObjC runtime: the implementation lives in the PrintKitUI binary, not in a header this harness may rely on.
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
 #import <objc/message.h>
+#import <objc/runtime.h>
 #import <pthread.h>
 #import <stdatomic.h>
 #import <string.h>

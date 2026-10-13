@@ -3,12 +3,12 @@
 // ./repro warm  same race after one uncontested pre-call populated the slot
 //
 // The slot's slow path runs once per process, so each process is one trial.
-#import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
+#import <Foundation/Foundation.h>
 #import <pthread.h>
 #import <stdatomic.h>
-#import <string.h>
 #import <stdio.h>
+#import <string.h>
 
 #define THREADS 8
 static void *results[THREADS];

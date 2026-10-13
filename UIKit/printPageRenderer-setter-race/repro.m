@@ -1,5 +1,5 @@
 // clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi \
-//   -isysroot <MacOSX.sdk> -iframework <MacOSX.sdk>/System/iOSSupport/System/Library/Frameworks \
+//   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks \
 //   -framework Foundation -framework UIKit repro.m -o repro
 //
 // ./repro 1000       8 threads race -[UIPrintInteractionController setPrintPageRenderer:] on the shared instance, fresh value per round

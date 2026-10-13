@@ -23,7 +23,7 @@ sh run.sh macos-host-apple-silicon
 
 ## Platforms
 
-macOS 26.6.2 build 25G83, Apple silicon, Xcode 27. Not yet run on other platforms.
+macOS 26.6.2 build 25G83, Apple silicon, Xcode 27, measured both directly on the host and inside a tart VM. Not yet run on other platforms.
 
 ## Results
 

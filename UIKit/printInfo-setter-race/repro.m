@@ -1,6 +1,6 @@
 // clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro
 // ./repro 1000        8 threads race the setter, 1000 rounds each, fresh probe value per set
-// ./repro 5000 warm   single-threaded control, 5000*8 sets, the same total as the cold run
+// ./repro 5000 warm   single-threaded control, 5000*8 = 40000 sets, five times the cold run's 8000
 //
 // The setter stores through an unlocked retain-new / load-old / store / release-old sequence,
 // so two racing setters can each release the same old value.

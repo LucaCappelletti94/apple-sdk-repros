@@ -20,14 +20,14 @@ clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi \
   -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks \
   -framework Foundation -framework UIKit repro.m -o repro
 ./repro 1000        # 8 threads race the setter for 1000 rounds each, fresh NSObject probe per set
-./repro 5000 warm   # control: single-threaded, 5000*8 sets, the same total as the cold run
+./repro 5000 warm   # control: single-threaded, 5000*8 = 40000 sets, five times the cold run's 8000
 ```
 
 Built for Mac Catalyst because UIKit does not link natively on macOS. The Catalyst slice is the Mac's UIKit, and the disassembled function lives in the same dyld shared-cache images the host runs.
 
 ## Reading a result
 
-The cold run is expected to crash, a `SIGSEGV` (exit 139) inside the setter's release or store, well before its 8000 total sets complete. Each thread prints a progress line every 50 sets, and the last lines in the raw output mark how far the race got before the crash, at most 50 sets behind it. A clean `completed 1000 rounds` would mean the double-release window was not hit in that trial. The warm control does the same total number of sets single-threaded, so no two threads ever race the store, and it always completes cleanly with exit 0. A crash there would mean the harness itself is broken, not the framework.
+The cold run is expected to crash, a `SIGSEGV` (exit 139) inside the setter's release or store, well before its 8000 total sets complete. Each thread prints a progress line every 50 sets, and the last lines in the raw output mark how far the race got before the crash, at most 50 sets behind it. A clean `completed 1000 rounds` would mean the double-release window was not hit in that trial. The warm control runs 40000 sets single-threaded, five times the cold run's total, so no two threads ever race the store, and it always completes cleanly with exit 0. A crash there would mean the harness itself is broken, not the framework.
 
 ## Platforms
 

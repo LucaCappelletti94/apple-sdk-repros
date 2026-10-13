@@ -17,12 +17,13 @@ check() {
     expect_lines="$3"
 
     dest="$tmp/$fixture"
-    "$root/scripts/make-race-window-result.sh" "test-$fixture" "$root/tests/fixtures/$fixture-output.txt" "$dest" >/dev/null
+    "$root/scripts/make-race-window-result.sh" "test-$fixture" "$root/tests/fixtures/$fixture-output.txt" "$dest" "test-command-$fixture" >/dev/null
 
     file=$(ls "$dest"/*.json)
     got_verdict=$(python3 -c "import json; print(json.load(open('$file'))['verdict'])")
     got_lines=$(python3 -c "import json; print(len(json.load(open('$file'))['runs']))")
     got_strength=$(python3 -c "import json; print(json.load(open('$file'))['strength'])")
+    got_command=$(python3 -c "import json; print(json.load(open('$file'))['command'])")
 
     if [ "$got_verdict" != "$expect_verdict" ]; then
         echo "FAIL $fixture: expected verdict '$expect_verdict', got '$got_verdict'" >&2
@@ -32,6 +33,9 @@ check() {
         fail=1
     elif [ "$got_strength" != "dynamic-window" ]; then
         echo "FAIL $fixture: expected strength 'dynamic-window', got '$got_strength'" >&2
+        fail=1
+    elif [ "$got_command" != "test-command-$fixture" ]; then
+        echo "FAIL $fixture: expected command 'test-command-$fixture', got '$got_command'" >&2
         fail=1
     else
         echo "ok $fixture: verdict=$got_verdict, strength=$got_strength, $got_lines result lines"

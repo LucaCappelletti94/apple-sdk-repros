@@ -1,5 +1,5 @@
 #!/bin/sh
-# make-crash-result.sh <platform-label> <output-file> <dest-dir> [xcode-version]
+# make-crash-result.sh <platform-label> <output-file> <dest-dir> <command> [xcode-version]
 #
 # Turns a crash-style harness's raw stdout (lines of the shape
 # "race <mode> rounds=N exit=E", as repro.m in
@@ -15,7 +15,8 @@ set -eu
 platform="$1"
 output="$2"
 dest="$3"
-xcode_version="${4:-}"
+command="$4"
+xcode_version="${5:-}"
 
 build=$(grep '^BuildVersion:' "$output" | awk '{print $2}')
 product_version=$(grep '^ProductVersion:' "$output" | awk '{print $2}')
@@ -27,10 +28,10 @@ fi
 mkdir -p "$dest"
 dest_file="$dest/${platform}-${build}.json"
 
-python3 - "$platform" "$product_version" "$build" "$xcode_version" "$output" "$dest_file" <<'PYEOF'
+python3 - "$platform" "$product_version" "$build" "$xcode_version" "$command" "$output" "$dest_file" <<'PYEOF'
 import json, re, sys
 
-platform, product_version, build, xcode_version, output_path, dest_path = sys.argv[1:7]
+platform, product_version, build, xcode_version, command, output_path, dest_path = sys.argv[1:8]
 text = open(output_path).read()
 
 runs = []
@@ -58,7 +59,7 @@ record = {
     "platform": platform,
     "os": {"product_version": product_version, "build": build},
     "xcode_version": xcode_version or None,
-    "command": "clang -O2 -fobjc-arc -framework Foundation -framework DeviceCheck repro.m -o repro",
+    "command": command,
     "strength": "fault",
     "runs": runs,
     "verdict": verdict,

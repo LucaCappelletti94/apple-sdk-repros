@@ -18,5 +18,6 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 | LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
 | UIKit | [`+[UIAccelerometer sharedAccelerometer]` lazy-init race](UIKit/sharedAccelerometer-lazy-init/) | fault: reproduced | none filed |
 | UIKit | [`+[UIMenuController sharedMenuController]` lazy-init race](UIKit/sharedMenuController-lazy-init/) | fault: reproduced | none filed |
+| UIKit | [`+[UIPrintInteractionController sharedPrintController]` lazy-init race](UIKit/sharedPrintController-lazy-init/) | fault: reproduced | none filed |
 <!-- sitemap:end -->
 

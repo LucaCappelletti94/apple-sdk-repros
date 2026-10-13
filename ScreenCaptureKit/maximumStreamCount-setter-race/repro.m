@@ -1,6 +1,6 @@
 // clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro
 // ./repro 1000        8 threads x 1000 rounds of -setMaximumStreamCount: on the shared picker
-// ./repro 5000 warm    control: single-threaded, 5000 x 8 total sets
+// ./repro 5000 warm    control, single-threaded, 5000 x 8 = 40000 sets, five times the cold run
 //
 // Probe value is a float NSNumber; small-integer NSNumbers are tagged pointers whose no-op retain/release hides the race.
 #import <Foundation/Foundation.h>

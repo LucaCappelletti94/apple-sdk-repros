@@ -19,16 +19,16 @@ Small-integer `NSNumber`s built with `numberWithInt:` are tagged pointers on thi
 ```sh
 clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro
 ./repro 1000        # 8 threads x 1000 rounds, each building a fresh float NSNumber and setting it
-./repro 5000 warm   # control, single-threaded, 5000 x 8 total sets
+./repro 5000 warm   # control, single-threaded, 5000 x 8 = 40000 sets, five times the cold run
 ```
 
 ## Reading a result
 
-The cold run is expected to crash with `SIGSEGV` (exit 139) well before all rounds complete, and measured today it crashed within the first few rounds in every fresh process (round 1-4 across five runs, one of which exited `SIGTRAP` 133 instead). The warm control runs the same total set count single-threaded and always completes cleanly with exit 0. A crash there would mean the harness is broken, not the framework.
+The cold run is expected to crash with `SIGSEGV` (exit 139) well before all rounds complete, and measured today it crashed within the first few rounds in every fresh process (round 1-4 across five runs, one of which exited `SIGTRAP` 133 instead). The warm control runs 40000 sets single-threaded, five times the cold run total, and always completes cleanly with exit 0. A crash there would mean the harness is broken, not the framework.
 
 ## Platforms
 
-Plain macOS (not Catalyst), Apple silicon. Verified on the real Mac host (macOS 26.6.2, build 25G83, Xcode 27.0) on 2026-10-13. The tart VM runs the same build with no Catalyst dependency and is verified there once this lands.
+Plain macOS (not Catalyst), Apple silicon. Verified on the real Mac host (macOS 26.6.2, build 25G83, Xcode 27.0) on 2026-10-13, and reproduced again inside a tart VM running the same build, see results/.
 
 ## Results
 

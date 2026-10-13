@@ -23,6 +23,9 @@ jobs:
           - LocalAuthentication/biometryType-domainState-cache
           - DeviceCheck/appAttestController-lazy-init
           - AppKit/sharedDocumentController-lazy-init
+          - AppKit/sharedColorPanel-lazy-init
+          - Foundation/sharedCoercionHandler-lazy-init
+          - Foundation/sharedAppleEventManager-lazy-init
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4

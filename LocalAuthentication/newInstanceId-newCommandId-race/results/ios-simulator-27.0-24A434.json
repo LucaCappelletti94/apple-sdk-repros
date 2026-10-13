@@ -1,0 +1,63 @@
+{
+  "platform": "ios-simulator-27.0",
+  "os": {
+    "product_version": "27.0",
+    "build": "24A434"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -target arm64-apple-ios17.0-simulator -isysroot $(xcrun --sdk iphonesimulator --show-sdk-path) -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "direct",
+      "threads": 1,
+      "expected": 16000000,
+      "advanced": 16000000,
+      "lost": 0
+    },
+    {
+      "mode": "direct",
+      "threads": 16,
+      "expected": 16000000,
+      "advanced": 3479401,
+      "lost": 12520599
+    },
+    {
+      "mode": "direct",
+      "threads": 16,
+      "expected": 16000000,
+      "advanced": 4620661,
+      "lost": 11379339
+    },
+    {
+      "mode": "direct",
+      "threads": 16,
+      "expected": 16000000,
+      "advanced": 3465741,
+      "lost": 12534259
+    },
+    {
+      "mode": "new",
+      "threads": 8,
+      "expected": 24000,
+      "advanced": 24000,
+      "lost": 0
+    },
+    {
+      "mode": "new",
+      "threads": 8,
+      "expected": 24000,
+      "advanced": 24000,
+      "lost": 0
+    },
+    {
+      "mode": "new",
+      "threads": 8,
+      "expected": 24000,
+      "advanced": 24000,
+      "lost": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-13T17:17:09Z\nProductName:\t\tiOS Simulator\nProductVersion:\t\t27.0\nBuildVersion:\t\t24A434\ndirect: threads=1 expected 16000000 increments, counter advanced 16000000, lost 0\ndirect: threads=16 expected 16000000 increments, counter advanced 3479401, lost 12520599\ndirect: threads=16 expected 16000000 increments, counter advanced 4620661, lost 11379339\ndirect: threads=16 expected 16000000 increments, counter advanced 3465741, lost 12534259\nnew: threads=8 expected 24000 increments, counter advanced 24000, lost 0\nnew: threads=8 expected 24000 increments, counter advanced 24000, lost 0\nnew: threads=8 expected 24000 increments, counter advanced 24000, lost 0\n2026-10-13T17:18:07Z\n"
+}

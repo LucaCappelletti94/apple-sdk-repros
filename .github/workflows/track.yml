@@ -32,6 +32,7 @@ jobs:
           - AppKit/sharedColorPanel-lazy-init
           - Foundation/sharedCoercionHandler-lazy-init
           - Foundation/sharedAppleEventManager-lazy-init
+          - UIKit/printInfo-setter-race
           - UIKit/menuItems-setter-race
     runs-on: ${{ matrix.runner }}
     steps:

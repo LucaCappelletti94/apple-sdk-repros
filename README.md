@@ -19,7 +19,13 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 | QuartzCore | [`+[CAAnimation defaultValueForKey:]` lazy-cache race](QuartzCore/animationSpeed-cache/) | dynamic-window: window-detected | none filed |
 | QuartzCore | [`+[CAEmitterCell defaultValueForKey:]` lazy-init race](QuartzCore/emitterCellColor-cache/) | fault: reproduced | none filed |
 | ScreenCaptureKit | [`-[SCContentSharingPicker defaultConfiguration]` lazy-init race](ScreenCaptureKit/defaultConfiguration-lazy-init/) | fault: reproduced | none filed |
+| ScreenCaptureKit | [`-[SCContentSharingPicker setDefaultConfiguration:]` setter race](ScreenCaptureKit/defaultConfiguration-setter-race/) | fault: reproduced | none filed |
 | ScreenCaptureKit | [`-[SCContentSharingPicker setMaximumStreamCount:]` setter race](ScreenCaptureKit/maximumStreamCount-setter-race/) | fault: reproduced | none filed |
+| UIKit | [`-[UIMenuController setMenuItems:]` setter race](UIKit/menuItems-setter-race/) | fault: reproduced | none filed |
+| UIKit | [`-[UIPrintInteractionController setPrintFormatter:]` setter race](UIKit/printFormatter-setter-race/) | fault: reproduced | none filed |
+| UIKit | [`-[UIPrintInteractionController setPrintInfo:]` unlocked-store race](UIKit/printInfo-setter-race/) | fault: reproduced | none filed |
+| UIKit | [`-[UIPrintInteractionController setPrintPageRenderer:]` setter race](UIKit/printPageRenderer-setter-race/) | fault: reproduced | none filed |
+| UIKit | [`-[UIPrintInteractionController setPrintingItems:]` setter race](UIKit/printingItems-setter-race/) | fault: reproduced | none filed |
 | UIKit | [`+[UIAccelerometer sharedAccelerometer]` lazy-init race](UIKit/sharedAccelerometer-lazy-init/) | fault: reproduced | none filed |
 | UIKit | [`+[UIMenuController sharedMenuController]` lazy-init race](UIKit/sharedMenuController-lazy-init/) | fault: reproduced | none filed |
 | UIKit | [`+[UIPrintInteractionController sharedPrintController]` lazy-init race](UIKit/sharedPrintController-lazy-init/) | fault: reproduced | none filed |

@@ -1,0 +1,24 @@
+{
+  "platform": "macos-vm-tart-macos-tahoe-base",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": null,
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-13T10:59:41Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\nresults[0] = 0x104a0a7d0\nresults[1] = 0x104a0a790\nresults[2] = 0x104a0a710\nresults[3] = 0x104a0adb0\nresults[4] = 0x104a0acb0\nresults[5] = 0x104a0abf0\nresults[6] = 0x104a0adf0\nresults[7] = 0x104a0a750\nfault: 7 of 8 threads got a different pointer than results[0]\nrace warm rounds=1 exit=0\nresults[0] = 0x104a126d0\nresults[1] = 0x104a126d0\nresults[2] = 0x104a126d0\nresults[3] = 0x104a126d0\nresults[4] = 0x104a126d0\nresults[5] = 0x104a126d0\nresults[6] = 0x104a126d0\nresults[7] = 0x104a126d0\nall 8 threads agree\n2026-10-13T10:59:41Z\n"
+}

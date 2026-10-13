@@ -1,0 +1,24 @@
+{
+  "platform": "macos-host-apple-silicon",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework AppKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 134
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-13T10:02:18Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=134\n*** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'NSWindow should only be instantiated on the main thread!'\n*** First throw call stack:\n(\n\t0   CoreFoundation                      0x000000018d7631f0 __exceptionPreprocess + 176\n\t1   libobjc.A.dylib                     0x000000018d1de91c objc_exception_throw + 88\n\t2   CoreFoundation                      0x000000018d786bc8 _CFBundleGetValueForInfoKey + 0\n\t3   AppKit                              0x0000000191b3b2c4 -[NSWindow _initContent:styleMask:backing:defer:contentView:] + 260\n\t4   AppKit                              0x0000000191c8a054 -[NSPanel _initContent:styleMask:backing:defer:contentView:] + 48\n\t5   AppKit                              0x0000000191b3b1b4 -[NSWindow initWithContentRect:styleMask:backing:defer:] + 48\n\t6   AppKit                              0x0000000191c8a008 -[NSPanel initWithContentRect:styleMask:backing:defer:] + 48\n\t7   AppKit                              0x00000001923af184 -[NSColorPanel initWithContentRect:styleMask:backing:defer:] + 48\n\t8   AppKit                              0x00000001923af99c +[NSColorPanel sharedColorPanel] + 52\n\t9   repro                               0x0000000100f38a58 worker + 60\n\t10  libsystem_pthread.dylib             0x000000018d637c58 _pthread_start + 136\n\t11  libsystem_pthread.dylib             0x000000018d6321c4 thread_start + 8\n)\nlibc++abi: terminating due to uncaught exception of type NSException\nrace warm rounds=1 exit=0\nno divergence\n2026-10-13T10:02:18Z\n"
+}

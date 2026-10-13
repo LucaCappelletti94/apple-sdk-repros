@@ -22,6 +22,7 @@ jobs:
           - LocalAuthentication/newInstanceId-newCommandId-race
           - LocalAuthentication/biometryType-domainState-cache
           - DeviceCheck/appAttestController-lazy-init
+          - Foundation/sharedCoercionHandler-lazy-init
           - Foundation/sharedAppleEventManager-lazy-init
     runs-on: ${{ matrix.runner }}
     steps:

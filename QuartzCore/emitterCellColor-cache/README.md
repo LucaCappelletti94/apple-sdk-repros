@@ -24,7 +24,7 @@ clang -O2 -fobjc-arc -framework Foundation -framework QuartzCore -framework Core
 
 ## Platforms
 
-The disassembly is from the macOS 26.6.2 binary. The harness has been run on macOS Apple silicon so far and not yet on iOS, where the same one-shot shape applies.
+The disassembly is from the macOS 26.6.2 binary. The harness has run on macOS Apple silicon so far, both directly on the host and inside a tart VM, and not yet on iOS, where the same one-shot shape applies.
 
 ## Results
 

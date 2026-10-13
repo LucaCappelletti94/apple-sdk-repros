@@ -9,6 +9,7 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 <!-- sitemap:start -->
 | Framework | Method | Status | Feedback |
 |---|---|---|---|
+| AppKit | [`+[NSColorPanel sharedColorPanel]` lazy-init race](AppKit/sharedColorPanel-lazy-init/) | fault: reproduced | none filed |
 | DeviceCheck | [`-[DCAppAttestService appAttestController]` lazy-init race](DeviceCheck/appAttestController-lazy-init/) | fault: reproduced | none filed |
 | Foundation | [`+[NSAppleEventManager sharedAppleEventManager]` lazy-init race](Foundation/sharedAppleEventManager-lazy-init/) | fault: reproduced | none filed |
 | Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | none filed |

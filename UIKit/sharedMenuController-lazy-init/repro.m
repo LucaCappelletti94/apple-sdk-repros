@@ -5,7 +5,6 @@
 // ./repro cold | ./repro warm
 // Catalyst's pthread.h has no pthread_barrier, so the release point is an atomic spin.
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <objc/message.h>
 #import <pthread.h>
 #import <stdatomic.h>

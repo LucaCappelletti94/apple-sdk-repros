@@ -97,7 +97,10 @@ static int count_overlaps(interval_t *v, int n) {
     for (int i = 1; i < n; i++) {
         interval_t key = v[i];
         int j = i - 1;
-        while (j >= 0 && v[j].start > key.start) { v[j + 1] = v[j]; j--; }
+        while (j >= 0 && v[j].start > key.start) {
+            v[j + 1] = v[j];
+            j--;
+        }
         v[j + 1] = key;
     }
     int overlaps = 0;
@@ -119,11 +122,11 @@ int main(int argc, char **argv) {
     g_intervals = malloc(sizeof(interval_t) * (size_t)g_capacity);
 
     Method m1 = class_getInstanceMethod([LAContext class], @selector(biometryType));
-    orig_biometryType = (LABiometryType(*)(id, SEL))method_getImplementation(m1);
+    orig_biometryType = (LABiometryType (*)(id, SEL))method_getImplementation(m1);
     method_setImplementation(m1, (IMP)swizzled_biometryType);
 
     Method m2 = class_getInstanceMethod([LAContext class], @selector(domainState));
-    orig_domainState = (id(*)(id, SEL))method_getImplementation(m2);
+    orig_domainState = (id (*)(id, SEL))method_getImplementation(m2);
     method_setImplementation(m2, (IMP)swizzled_domainState);
 
     pthread_t t[256];

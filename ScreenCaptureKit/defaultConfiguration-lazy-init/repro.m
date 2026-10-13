@@ -10,10 +10,10 @@
 // called once, single-threaded, before the race.
 #import <Foundation/Foundation.h>
 #import <ScreenCaptureKit/ScreenCaptureKit.h>
-#include <stdio.h>
-#include <string.h>
 #import <pthread.h>
 #import <stdatomic.h>
+#include <stdio.h>
+#include <string.h>
 
 #define THREADS 8
 

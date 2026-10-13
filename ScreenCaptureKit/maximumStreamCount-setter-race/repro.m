@@ -24,7 +24,7 @@ static void *worker(void *arg) {
         int r = atomic_load(&go);
         if (r < 0) return NULL;
         @autoreleasepool {
-            ((void(*)(id, SEL, id))objc_msgSend)(picker, setSel, [NSNumber numberWithDouble:(double)r * THREADS + i + 0.5]);
+            ((void (*)(id, SEL, id))objc_msgSend)(picker, setSel, [NSNumber numberWithDouble:(double)r * THREADS + i + 0.5]);
         }
         atomic_fetch_add(&done, 1);
     }
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     if (warm) {
         for (int r = 0; r < rounds * THREADS; r++) {
             @autoreleasepool {
-                ((void(*)(id, SEL, id))objc_msgSend)(picker, setSel, [NSNumber numberWithDouble:r + 0.5]);
+                ((void (*)(id, SEL, id))objc_msgSend)(picker, setSel, [NSNumber numberWithDouble:r + 0.5]);
             }
         }
         printf("completed %d rounds (%d sets)\n", rounds, rounds * THREADS);

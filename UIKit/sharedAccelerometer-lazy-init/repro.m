@@ -31,7 +31,7 @@ static void *worker(void *arg) {
     atomic_fetch_add(&ready, 1);
     while (atomic_load(&ready) < THREADS) {}
     // the bridge keeps our own +1 so the comparison cannot read freed memory
-    results[i] = (__bridge_retained void *)((id(*)(id, SEL))objc_msgSend)(cls, sel);
+    results[i] = (__bridge_retained void *)((id (*)(id, SEL))objc_msgSend)(cls, sel);
     return NULL;
 }
 
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
         fprintf(stderr, "UIAccelerometer sharedAccelerometer unavailable\n");
         return 2;
     }
-    if (warm) (void)((id(*)(id, SEL))objc_msgSend)(cls, sel);
+    if (warm) (void)((id (*)(id, SEL))objc_msgSend)(cls, sel);
     pthread_t t[THREADS];
     for (long i = 0; i < THREADS; i++) pthread_create(&t[i], NULL, worker, (void *)(uintptr_t)i);
     for (long i = 0; i < THREADS; i++) pthread_join(t[i], NULL);

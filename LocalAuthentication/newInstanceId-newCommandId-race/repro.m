@@ -23,7 +23,9 @@ static void *worker(void *arg) {
         if (direct) {
             (void)instance_id();
         } else {
-            @autoreleasepool { (void)[LAContext new]; }
+            @autoreleasepool {
+                (void)[LAContext new];
+            }
         }
     }
     return NULL;

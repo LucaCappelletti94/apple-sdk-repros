@@ -61,7 +61,10 @@ static int count_overlaps(interval_t *v, int n) {
     for (int i = 1; i < n; i++) {
         interval_t key = v[i];
         int j = i - 1;
-        while (j >= 0 && v[j].start > key.start) { v[j + 1] = v[j]; j--; }
+        while (j >= 0 && v[j].start > key.start) {
+            v[j + 1] = v[j];
+            j--;
+        }
         v[j + 1] = key;
     }
     int overlaps = 0;
@@ -75,7 +78,7 @@ static int count_overlaps(interval_t *v, int n) {
 
 int main(void) {
     Method m = class_getClassMethod([CAAnimation class], @selector(defaultValueForKey:));
-    orig_defaultValueForKey = (id(*)(id, SEL, id))method_getImplementation(m);
+    orig_defaultValueForKey = (id (*)(id, SEL, id))method_getImplementation(m);
     method_setImplementation(m, (IMP)swizzled_defaultValueForKey);
 
     pthread_t t[8];

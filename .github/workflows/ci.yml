@@ -18,6 +18,9 @@ jobs:
       - name: Install shellcheck
         run: brew install shellcheck
 
+      - name: Install clang-format
+        run: brew install clang-format
+
       - name: Shell syntax and lint
         run: |
           set -e
@@ -41,6 +44,15 @@ jobs:
             framework=$(basename "$(dirname "$(dirname "$repro")")")
             echo "compiling $repro against -framework $framework"
             clang -fsyntax-only -fobjc-arc -framework Foundation -framework "$framework" "$repro" || status=1
+          done < <(find . -name repro.m -print0)
+          exit $status
+
+      - name: Objective-C formatting
+        run: |
+          set -e
+          status=0
+          while IFS= read -r -d '' repro; do
+            clang-format --dry-run --Werror "$repro" || status=1
           done < <(find . -name repro.m -print0)
           exit $status
 

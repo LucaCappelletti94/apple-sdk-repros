@@ -1,8 +1,8 @@
 // clang -O2 -fobjc-arc -framework Foundation -framework AppKit repro.m -o repro
 // ./repro cold    8 threads make the first call in this process at once; divergent pointers -> exit 1
 // ./repro warm    main thread pre-calls alone, then the same 8 race; must always agree
-#import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
+#import <Foundation/Foundation.h>
 #import <pthread.h>
 #import <stdatomic.h>
 #import <stdio.h>

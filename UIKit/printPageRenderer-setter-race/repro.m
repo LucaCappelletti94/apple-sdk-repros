@@ -7,8 +7,8 @@
 //
 // The shared instance is resolved once, before the threads start; only the setter call inside the loop is the race.
 #import <Foundation/Foundation.h>
-#import <objc/runtime.h>
 #import <objc/message.h>
+#import <objc/runtime.h>
 #import <pthread.h>
 #import <stdatomic.h>
 
@@ -52,7 +52,9 @@ int main(int argc, char **argv) {
     set_sel = NSSelectorFromString(@"setPrintPageRenderer:");
     if (warm) {
         for (int r = 0; r < rounds; r++)
-            @autoreleasepool { set_renderer([[NSObject alloc] init]); }
+            @autoreleasepool {
+                set_renderer([[NSObject alloc] init]);
+            }
         printf("completed %d rounds\n", rounds);
         return 0;
     }

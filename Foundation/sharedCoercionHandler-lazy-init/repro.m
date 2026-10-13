@@ -30,7 +30,8 @@ int main(int argc, char **argv) {
     atomic_store(&go, 1);
     for (int i = 0; i < THREADS; i++) pthread_join(t[i], NULL);
     int diff = 0;
-    for (int i = 1; i < THREADS; i++) if (results[i] != results[0]) diff++;
+    for (int i = 1; i < THREADS; i++)
+        if (results[i] != results[0]) diff++;
     if (diff) printf("diverged: %d of %d threads got a different pointer than thread 0\n", diff, THREADS);
     else printf("all %d threads agree on %p\n", THREADS, results[0]);
     for (int i = 0; i < THREADS; i++) CFRelease(results[i]);

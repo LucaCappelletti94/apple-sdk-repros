@@ -22,6 +22,7 @@ jobs:
           - LocalAuthentication/newInstanceId-newCommandId-race
           - LocalAuthentication/biometryType-domainState-cache
           - DeviceCheck/appAttestController-lazy-init
+          - QuartzCore/emitterCellColor-cache
           - QuartzCore/animationSpeed-cache
           - UIKit/sharedPrintController-lazy-init
           - UIKit/sharedMenuController-lazy-init

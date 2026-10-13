@@ -34,7 +34,7 @@ The target's slow path runs once per process, so one invocation of `repro` is on
 
 ## Platforms
 
-Plain macOS (not Catalyst), Apple silicon, macOS 26.6.2 (25G83), Xcode 27.0. Verified on the real Mac host, where the cold trial diverged 100/100 on 2026-10-13. This harness reproduced it 10/10 with the warm control agreeing 30/30.
+Plain macOS (not Catalyst), Apple silicon, macOS 26.6.2 (25G83), Xcode 27.0. Verified on the real Mac host, where the cold trial diverged 100/100 on 2026-10-13, and reproduced again inside a tart VM running the same build.
 
 ## Results
 

@@ -22,7 +22,7 @@ clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/
 
 Built for Mac Catalyst because UIKit does not link natively on macOS, and the Catalyst slice is the Mac's UIKit with the disassembled function living in the same dyld shared-cache images the host runs. The class and selectors are resolved through the ObjC runtime so the harness does not depend on any header's availability annotations.
 
-The probe value is a real `NSArray`, `@[[[NSObject alloc] init]]`, fresh each round. The property is `copy`, so the setter calls `-copyWithZone:` on its argument, and a plain `NSObject` probe raises `-[NSObject copyWithZone:]: unrecognized selector`, a different crash from the one under test. `NSArray` implements `copyWithZone:` and is not tagged-pointer-eligible, so every round's retain-new and release-old are real operations on the shared slot.
+The probe value is a real `NSArray`, `@[[[NSObject alloc] init]]`, fresh each round. The property is `copy`, so the setter calls `-copyWithZone:` on its argument. The probe uses the property's declared `NSArray` type for fidelity to the real `printingItems` type, rather than an unrelated `NSObject`. `NSArray` implements `copyWithZone:` and is not tagged-pointer-eligible, so every round's retain-new and release-old are real operations on the shared slot.
 
 ## Reading a result
 

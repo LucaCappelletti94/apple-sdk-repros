@@ -46,6 +46,6 @@ int main(int argc, char **argv) {
     for (int i = 0; i < threads; i++) pthread_join(t[i], NULL);
     unsigned advanced = instance_id() - before - 1;
     unsigned expected = (unsigned)(threads * per_thread);
-    printf("%s: expected %u increments, counter advanced %u, lost %u\n", argv[1], expected, advanced, expected - advanced);
+    printf("%s: threads=%d expected %u increments, counter advanced %u, lost %u\n", argv[1], threads, expected, advanced, expected - advanced);
     return 0;
 }

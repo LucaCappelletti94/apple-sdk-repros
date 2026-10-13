@@ -22,7 +22,7 @@ clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication "$here
     date -u +%Y-%m-%dT%H:%M:%SZ
 } > "$here/output.txt" 2>&1
 
-result_line=$("$here/../../scripts/make-race-window-result.sh" "$platform" "$here/output.txt" "$here/results" "$xcode_version")
+result_line=$("$here/../../scripts/make-race-window-result.sh" "$platform" "$here/output.txt" "$here/results" "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro" "$xcode_version")
 result_file=$(printf '%s\n' "$result_line" | sed -n 's/^wrote \(.*\): verdict=.*/\1/p')
 rm -f "$here/output.txt" "$here/repro"
 echo "RESULT_FILE $result_file"

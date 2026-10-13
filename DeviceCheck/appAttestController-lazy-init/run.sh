@@ -33,7 +33,7 @@ set -e
     date -u +%Y-%m-%dT%H:%M:%SZ
 } > "$here/output.txt"
 
-result_line=$("$here/../../scripts/make-crash-result.sh" "$platform" "$here/output.txt" "$here/results" "$xcode_version")
+result_line=$("$here/../../scripts/make-crash-result.sh" "$platform" "$here/output.txt" "$here/results" "clang -O2 -fobjc-arc -framework Foundation -framework DeviceCheck repro.m -o repro" "$xcode_version")
 result_file=$(printf '%s\n' "$result_line" | sed -n 's/^wrote \(.*\): verdict=.*/\1/p')
 rm -f "$here/output.txt" "$here/cold.out" "$here/warm.out" "$here/repro"
 echo "RESULT_FILE $result_file"

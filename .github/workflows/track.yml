@@ -21,6 +21,7 @@ jobs:
         method:
           - LocalAuthentication/newInstanceId-newCommandId-race
           - LocalAuthentication/biometryType-domainState-cache
+          - DeviceCheck/appAttestController-lazy-init
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4

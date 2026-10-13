@@ -31,14 +31,16 @@ jobs:
         run: |
           sh tests/make-result-test.sh
           sh tests/make-race-window-result-test.sh
+          sh tests/make-crash-result-test.sh
 
       - name: Every repro.m compiles
         run: |
           set -e
           status=0
           while IFS= read -r -d '' repro; do
-            echo "compiling $repro"
-            clang -fsyntax-only -fobjc-arc -framework Foundation -framework LocalAuthentication "$repro" || status=1
+            framework=$(basename "$(dirname "$(dirname "$repro")")")
+            echo "compiling $repro against -framework $framework"
+            clang -fsyntax-only -fobjc-arc -framework Foundation -framework "$framework" "$repro" || status=1
           done < <(find . -name repro.m -print0)
           exit $status
 

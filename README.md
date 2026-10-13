@@ -9,9 +9,16 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 <!-- sitemap:start -->
 | Framework | Method | Status | Feedback |
 |---|---|---|---|
+| AppKit | [`+[NSColorPanel sharedColorPanel]` lazy-init race](AppKit/sharedColorPanel-lazy-init/) | fault: reproduced | none filed |
+| AppKit | [`+[NSDocumentController sharedDocumentController]` lazy-init race](AppKit/sharedDocumentController-lazy-init/) | fault: reproduced | none filed |
 | DeviceCheck | [`-[DCAppAttestService appAttestController]` lazy-init race](DeviceCheck/appAttestController-lazy-init/) | fault: reproduced | none filed |
+| Foundation | [`+[NSAppleEventManager sharedAppleEventManager]` lazy-init race](Foundation/sharedAppleEventManager-lazy-init/) | fault: reproduced | none filed |
+| Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | none filed |
 | LocalAuthentication | [`-[LAContext biometryType]` / `-[LAContext domainState]` cached-pointer race](LocalAuthentication/biometryType-domainState-cache/) | dynamic-window: window-detected | FB25157119 |
 | LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
 | QuartzCore | [`+[CAAnimation defaultValueForKey:]` lazy-cache race](QuartzCore/animationSpeed-cache/) | dynamic-window: window-detected | none filed |
+| UIKit | [`+[UIAccelerometer sharedAccelerometer]` lazy-init race](UIKit/sharedAccelerometer-lazy-init/) | fault: reproduced | none filed |
+| UIKit | [`+[UIMenuController sharedMenuController]` lazy-init race](UIKit/sharedMenuController-lazy-init/) | fault: reproduced | none filed |
+| UIKit | [`+[UIPrintInteractionController sharedPrintController]` lazy-init race](UIKit/sharedPrintController-lazy-init/) | fault: reproduced | none filed |
 <!-- sitemap:end -->
 

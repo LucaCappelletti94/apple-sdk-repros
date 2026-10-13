@@ -33,6 +33,11 @@ jobs:
           - Foundation/sharedCoercionHandler-lazy-init
           - Foundation/sharedAppleEventManager-lazy-init
           - ScreenCaptureKit/defaultConfiguration-setter-race
+          - UIKit/printingItems-setter-race
+          - UIKit/printFormatter-setter-race
+          - UIKit/printPageRenderer-setter-race
+          - UIKit/printInfo-setter-race
+          - UIKit/menuItems-setter-race
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4

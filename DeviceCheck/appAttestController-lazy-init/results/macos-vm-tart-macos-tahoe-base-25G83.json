@@ -1,0 +1,24 @@
+{
+  "platform": "macos-vm-tart-macos-tahoe-base",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": null,
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework DeviceCheck repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1000,
+      "exit_code": 134
+    },
+    {
+      "mode": "warm",
+      "rounds": 5000,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-13T07:56:42Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1000 exit=134\n*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[DCDeviceMetadataDaemonConnection appAttestType]: unrecognized selector sent to instance 0x79b034100'\n*** First throw call stack:\n(\n\t0   CoreFoundation                      0x000000018e98b1f0 __exceptionPreprocess + 176\n\t1   libobjc.A.dylib                     0x000000018e40691c objc_exception_throw + 88\n\t2   CoreFoundation                      0x000000018ea4c3b4 -[NSObject(NSObject) __retain_OA] + 0\n\t3   CoreFoundation                      0x000000018e8fbf68 ___forwarding___ + 1480\n\t4   CoreFoundation                      0x000000018e8fb8e0 _CF_forwarding_prep_0 + 96\n\t5   DeviceCheck                         0x0000000232fa99a4 -[DCAppAttestController isSupportedWithError:] + 240\n\t6   DeviceCheck                         0x0000000232fa3a3c -[DCAppAttestController isSupported] + 56\n\t7   DeviceCheck                         0x0000000232faca74 -[DCAppAttestService isSupported] + 36\n\t8   repro                               0x0000000104fb4a00 worker + 96\n\t9   libsystem_pthread.dylib             0x000000018e85fc58 _pthread_start + 136\n\t10  libsystem_pthread.dylib             0x000000018e85ac1c thread_start + 8\n)\nlibc++abi: terminating due to uncaught exception of type NSException\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds\n2026-10-13T07:56:42Z\n"
+}

@@ -12,5 +12,6 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 | DeviceCheck | [`-[DCAppAttestService appAttestController]` lazy-init race](DeviceCheck/appAttestController-lazy-init/) | fault: reproduced | none filed |
 | LocalAuthentication | [`-[LAContext biometryType]` / `-[LAContext domainState]` cached-pointer race](LocalAuthentication/biometryType-domainState-cache/) | dynamic-window: window-detected | FB25157119 |
 | LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
+| ScreenCaptureKit | [`-[SCContentSharingPicker defaultConfiguration]` lazy-init race](ScreenCaptureKit/defaultConfiguration-lazy-init/) | fault: reproduced | none filed |
 <!-- sitemap:end -->
 

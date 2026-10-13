@@ -28,7 +28,7 @@ A `cold` trial exits `1` when two racing first-callers got different panels, `0`
 
 ## Platforms
 
-Verified headless over SSH on the macOS 26.6.2 (25G83) Apple silicon host with Xcode 27. Not yet tried in a tart VM or on iOS.
+Verified headless over SSH on the macOS 26.6.2 (25G83) Apple silicon host with Xcode 27, and reproduced the same way inside a tart VM running the same build. Not yet tried on iOS.
 
 ## Results
 

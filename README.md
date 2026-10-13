@@ -16,5 +16,6 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 | Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | none filed |
 | LocalAuthentication | [`-[LAContext biometryType]` / `-[LAContext domainState]` cached-pointer race](LocalAuthentication/biometryType-domainState-cache/) | dynamic-window: window-detected | FB25157119 |
 | LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
+| UIKit | [`+[UIAccelerometer sharedAccelerometer]` lazy-init race](UIKit/sharedAccelerometer-lazy-init/) | fault: reproduced | none filed |
 <!-- sitemap:end -->
 

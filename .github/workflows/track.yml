@@ -22,6 +22,7 @@ jobs:
           - LocalAuthentication/newInstanceId-newCommandId-race
           - LocalAuthentication/biometryType-domainState-cache
           - DeviceCheck/appAttestController-lazy-init
+          - UIKit/sharedMenuController-lazy-init
           - UIKit/sharedAccelerometer-lazy-init
           - AppKit/sharedDocumentController-lazy-init
           - AppKit/sharedColorPanel-lazy-init

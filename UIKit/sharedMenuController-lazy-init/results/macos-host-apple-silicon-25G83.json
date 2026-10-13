@@ -1,0 +1,24 @@
+{
+  "platform": "macos-host-apple-silicon",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-13T10:05:16Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ncold: distinct=5 exceptions=2\nexception: NSInternalInconsistencyException: There can only be one UIMenuController instance.\nrace warm rounds=1 exit=0\nwarm: distinct=1 exceptions=0\n2026-10-13T10:05:16Z\n"
+}

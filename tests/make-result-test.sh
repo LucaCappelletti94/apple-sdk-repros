@@ -54,6 +54,13 @@ check bad-control inconclusive 2
 # two of three "new" runs lost an increment, so this is a reproduction.
 check reproduced reproduced 7
 
+# Real captured output (an iOS Simulator run): every "new" run is clean
+# but the repeated 16-thread "direct" runs lose millions of increments.
+# This is the exact shape that exposed the bug where the classifier only
+# ever looked at "new" runs for the reproduced signal, never at the
+# non-control "direct" runs, silently reporting not-reproduced.
+check direct-only-reproduced reproduced 7
+
 if [ "$fail" != 0 ]; then
     echo "make-result-test.sh: one or more checks failed" >&2
     exit 1

@@ -2,11 +2,11 @@
 ProductName:		macOS
 ProductVersion:		26.6.2
 BuildVersion:		25G83
-direct: expected 16000000 increments, counter advanced 16000000, lost 0
-direct: expected 16000000 increments, counter advanced 1564740, lost 14435260
-direct: expected 16000000 increments, counter advanced 1639281, lost 14360719
-direct: expected 16000000 increments, counter advanced 1571119, lost 14428881
-new: expected 24000 increments, counter advanced 23999, lost 1
-new: expected 24000 increments, counter advanced 23999, lost 1
-new: expected 24000 increments, counter advanced 24000, lost 0
+direct: threads=1 expected 16000000 increments, counter advanced 16000000, lost 0
+direct: threads=16 expected 16000000 increments, counter advanced 1564740, lost 14435260
+direct: threads=16 expected 16000000 increments, counter advanced 1639281, lost 14360719
+direct: threads=16 expected 16000000 increments, counter advanced 1571119, lost 14428881
+new: threads=8 expected 24000 increments, counter advanced 23999, lost 1
+new: threads=8 expected 24000 increments, counter advanced 23999, lost 1
+new: threads=8 expected 24000 increments, counter advanced 24000, lost 0
 2026-10-12T15:57:06Z

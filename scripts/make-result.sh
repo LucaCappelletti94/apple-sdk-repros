@@ -5,10 +5,12 @@
 # result lines in the shape the LocalAuthentication repros print) into one
 # results/<platform>-<build>.json record, at `fault` strength (see
 # EVIDENCE.md): these runs either show the actual wrong answer or they
-# don't, there is no weaker claim being made. Verdict is `reproduced` if
-# any `new` line lost an increment, `not-reproduced` if every `new` and
-# the single-threaded `direct 1 ...` control line lost none, `inconclusive`
-# otherwise (for example if the control itself lost something).
+# don't, there is no weaker claim being made. The single-threaded `direct
+# threads=1 ...` line is the control; verdict is `reproduced` if any
+# other `direct` or `new` line lost an increment, `not-reproduced` if
+# every other line lost none, `inconclusive` otherwise (for example if
+# the control itself lost something, or there is nothing but the control
+# to compare against).
 set -eu
 
 platform="$1"
@@ -36,28 +38,30 @@ lines = text.splitlines()
 
 results = []
 for l in lines:
-    m = re.match(r'(direct|new): expected (\d+) increments, counter advanced (\d+), lost (\d+)', l)
+    m = re.match(r'(direct|new): threads=(\d+) expected (\d+) increments, counter advanced (\d+), lost (\d+)', l)
     if m:
         results.append({
             "mode": m.group(1),
-            "expected": int(m.group(2)),
-            "advanced": int(m.group(3)),
-            "lost": int(m.group(4)),
+            "threads": int(m.group(2)),
+            "expected": int(m.group(3)),
+            "advanced": int(m.group(4)),
+            "lost": int(m.group(5)),
         })
 
-control = [r for r in results if r["mode"] == "direct" and r["expected"] >= 1_000_000 and
-           # the single-threaded control is the one whose expected count isn't
-           # repeated by any 16-thread "direct" run in the same output
-           sum(1 for r2 in results if r2["mode"] == "direct" and r2["expected"] == r["expected"]) == 1]
+direct_runs = [r for r in results if r["mode"] == "direct"]
+# the single-threaded control is the direct-mode run invoked with
+# threads=1, distinct from every multi-threaded direct trial
+control = [r for r in direct_runs if r["threads"] == 1]
+repeated_direct = [r for r in direct_runs if r["threads"] != 1]
 new_runs = [r for r in results if r["mode"] == "new"]
 
 if not results:
     verdict = "inconclusive"
 elif any(r["lost"] > 0 for r in control):
     verdict = "inconclusive"
-elif any(r["lost"] > 0 for r in new_runs):
+elif any(r["lost"] > 0 for r in repeated_direct) or any(r["lost"] > 0 for r in new_runs):
     verdict = "reproduced"
-elif new_runs:
+elif repeated_direct or new_runs:
     verdict = "not-reproduced"
 else:
     verdict = "inconclusive"

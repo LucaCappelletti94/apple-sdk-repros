@@ -2,6 +2,6 @@
 ProductName:		macOS
 ProductVersion:		99.0
 BuildVersion:		99Z98
-direct: expected 16000000 increments, counter advanced 15999999, lost 1
-new: expected 24000 increments, counter advanced 24000, lost 0
+direct: threads=1 expected 16000000 increments, counter advanced 15999999, lost 1
+new: threads=8 expected 24000 increments, counter advanced 24000, lost 0
 2026-01-01T00:01:00Z

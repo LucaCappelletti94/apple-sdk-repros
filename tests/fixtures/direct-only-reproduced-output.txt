@@ -1,0 +1,12 @@
+2026-10-13T20:00:00Z
+ProductName:		iOS Simulator
+ProductVersion:		27.0
+BuildVersion:		24A434
+direct: threads=1 expected 16000000 increments, counter advanced 16000000, lost 0
+direct: threads=16 expected 16000000 increments, counter advanced 3988126, lost 12011874
+direct: threads=16 expected 16000000 increments, counter advanced 4936350, lost 11063650
+direct: threads=16 expected 16000000 increments, counter advanced 4737535, lost 11262465
+new: threads=8 expected 24000 increments, counter advanced 24000, lost 0
+new: threads=8 expected 24000 increments, counter advanced 24000, lost 0
+new: threads=8 expected 24000 increments, counter advanced 24000, lost 0
+2026-10-13T20:00:05Z

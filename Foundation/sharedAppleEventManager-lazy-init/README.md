@@ -29,7 +29,7 @@ The verdict in the JSON is `reproduced` when the cold run exits nonzero, `not-re
 
 ## Platforms
 
-Measured on macOS 26.6.2, build 25G83, Apple silicon (host). The disassembly in the audit is from the same build. Not tried on iOS or other OS builds.
+Measured on macOS 26.6.2, build 25G83, Apple silicon, both directly on the host and inside a tart VM. The disassembly in the audit is from the same build. Not tried on iOS or other OS builds.
 
 ## Results
 

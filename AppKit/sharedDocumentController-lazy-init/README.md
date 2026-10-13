@@ -30,7 +30,7 @@ Measured on this host: 83 of 100 single-trial cold runs diverged. The verificati
 
 ## Platforms
 
-Reproduced on the host, Apple silicon macOS 26.6.2 (build 25G83), Xcode 27. Not yet tried in the tart VM. Not tried on iOS.
+Reproduced on the host and in the tart VM, both Apple silicon macOS 26.6.2 (build 25G83), Xcode 27. Not tried on iOS.
 
 ## Results
 

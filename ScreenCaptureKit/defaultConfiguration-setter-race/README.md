@@ -26,7 +26,7 @@ The cold run is expected to crash with `SIGSEGV` (exit 139) inside `objc_release
 
 ## Platforms
 
-Plain macOS (not Catalyst), Apple silicon, macOS 26.6.2 (25G83), Xcode 27.0. No Catalyst dependency, so the tart VM can also run this. Host-verified. The tart VM run is handled separately.
+Plain macOS (not Catalyst), Apple silicon, macOS 26.6.2 (25G83), Xcode 27.0. No Catalyst dependency, so the tart VM can also run this, and it does. Both the host and the tart VM reproduced the crash, see results/.
 
 ## Results
 

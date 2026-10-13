@@ -33,7 +33,7 @@ Measured today on the host, 50 of 50 fresh processes reported at least one overl
 
 ## Platforms
 
-Runs on macOS (26.6.2, build 25G83, Apple silicon, host). Every fresh process is one independent trial of the per-process window; no other platform changes that shape, so no other platform is recorded.
+Runs on macOS (26.6.2, build 25G83, Apple silicon), measured both on the host and inside a tart VM. Every fresh process is one independent trial of the per-process window; no other platform changes that shape, so no other platform is recorded.
 
 ## Results
 

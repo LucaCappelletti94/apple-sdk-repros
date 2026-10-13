@@ -22,6 +22,7 @@ jobs:
           - LocalAuthentication/newInstanceId-newCommandId-race
           - LocalAuthentication/biometryType-domainState-cache
           - DeviceCheck/appAttestController-lazy-init
+          - AppKit/sharedColorPanel-lazy-init
     runs-on: ${{ matrix.runner }}
     steps:
       - uses: actions/checkout@v4

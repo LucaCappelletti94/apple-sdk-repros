@@ -1,0 +1,24 @@
+{
+  "platform": "macos-host-apple-silicon",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1000,
+      "exit_code": 139
+    },
+    {
+      "mode": "warm",
+      "rounds": 5000,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-13T15:31:17Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1000 exit=139\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds (40000 sets)\n2026-10-13T15:31:17Z\n"
+}

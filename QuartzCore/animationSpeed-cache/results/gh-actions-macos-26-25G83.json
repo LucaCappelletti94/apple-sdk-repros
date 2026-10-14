@@ -13,27 +13,6 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 2
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 2
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 3
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
       "overlaps": 7
     },
     {
@@ -48,7 +27,42 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 2
+      "overlaps": 1
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 0
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 0
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 0
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 0
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 0
     },
     {
       "readers": 8,
@@ -62,23 +76,9 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 7
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 7
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 7
+      "overlaps": 0
     }
   ],
   "verdict": "window-detected",
-  "raw_output": "2026-10-14T17:18:25Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\nreaders=8 writers=0 seconds=0 calls=8 overlaps=3\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\n2026-10-14T17:18:25Z\n"
+  "raw_output": "2026-10-14T18:16:47Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=1\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\n2026-10-14T18:16:47Z\n"
 }

@@ -1,0 +1,42 @@
+{
+  "platform": "gh-actions-macos-26",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "26.6",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "direct",
+      "threads": 1,
+      "expected": 16000000,
+      "advanced": 16000000,
+      "lost": 0
+    },
+    {
+      "mode": "direct",
+      "threads": 16,
+      "expected": 16000000,
+      "advanced": 10317157,
+      "lost": 5682843
+    },
+    {
+      "mode": "direct",
+      "threads": 16,
+      "expected": 16000000,
+      "advanced": 11264288,
+      "lost": 4735712
+    },
+    {
+      "mode": "direct",
+      "threads": 16,
+      "expected": 16000000,
+      "advanced": 10904683,
+      "lost": 5095317
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T18:16:43Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\ndirect: threads=1 expected 16000000 increments, counter advanced 16000000, lost 0\ndirect: threads=16 expected 16000000 increments, counter advanced 10317157, lost 5682843\ndirect: threads=16 expected 16000000 increments, counter advanced 11264288, lost 4735712\ndirect: threads=16 expected 16000000 increments, counter advanced 10904683, lost 5095317\n2026-10-14T18:16:46Z\n"
+}

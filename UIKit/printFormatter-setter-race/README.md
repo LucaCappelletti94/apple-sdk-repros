@@ -1,6 +1,6 @@
 # `-[UIPrintInteractionController setPrintFormatter:]` setter race
 
-Apple Feedback: not yet filed.
+Apple Feedback: not worth filing. Apple declares `UIPrintInteractionController` main-thread-only, see [why](../../README.md#findings-not-filed-with-apple).
 
 ## What this tests
 

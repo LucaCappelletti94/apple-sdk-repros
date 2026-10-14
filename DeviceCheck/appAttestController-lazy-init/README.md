@@ -1,6 +1,6 @@
 # `-[DCAppAttestService appAttestController]` lazy-init race
 
-Apple Feedback: not yet filed. The write-up exists at `upstream/fb-device-check/report.md` in the `objc2.upstreams/safe-device-check` session's worktree, ported here along with its reproduction, but the FB has not been submitted to Apple.
+Apple Feedback: FB25187723 (filed, open as of 2026-10-14, Apple has not replied).
 
 ## What this tests
 

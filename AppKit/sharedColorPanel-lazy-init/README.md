@@ -1,6 +1,6 @@
 # `+[NSColorPanel sharedColorPanel]` lazy-init race
 
-Apple Feedback: not yet filed.
+Apple Feedback: not worth filing. Apple declares `NSColorPanel` main-thread-only through `NSResponder`, see [why](../../README.md#findings-not-filed-with-apple).
 
 ## What this tests
 

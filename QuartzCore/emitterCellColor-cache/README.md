@@ -1,6 +1,6 @@
 # `+[CAEmitterCell defaultValueForKey:]` lazy-init race
 
-Apple Feedback: not yet filed.
+Apple Feedback: FB25188025 (filed, open as of 2026-10-14, Apple has not replied).
 
 ## What this tests
 

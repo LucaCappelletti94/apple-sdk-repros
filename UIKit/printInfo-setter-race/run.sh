@@ -14,7 +14,8 @@ platform="$1"
 xcode_version="${2:-}"
 here=$(cd "$(dirname "$0")" && pwd)
 
-clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit "$here/repro.m" -o "$here/repro"
+sdk=$(xcrun --sdk macosx --show-sdk-path)
+clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot "$sdk" -iframework "$sdk"/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit "$here/repro.m" -o "$here/repro"
 
 set +e
 "$here/repro" 1000 > "$here/cold.out" 2>&1
@@ -33,7 +34,7 @@ set -e
     date -u +%Y-%m-%dT%H:%M:%SZ
 } > "$here/output.txt"
 
-result_line=$("$here/../../scripts/make-crash-result.sh" "$platform" "$here/output.txt" "$here/results" "clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro" "$xcode_version")
+result_line=$("$here/../../scripts/make-crash-result.sh" "$platform" "$here/output.txt" "$here/results" "clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot $sdk -iframework $sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro" "$xcode_version")
 result_file=$(printf '%s\n' "$result_line" | sed -n 's/^wrote \(.*\): verdict=.*/\1/p')
 rm -f "$here/output.txt" "$here/cold.out" "$here/warm.out" "$here/repro"
 echo "RESULT_FILE $result_file"

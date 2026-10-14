@@ -25,7 +25,12 @@ for readme in sorted(glob.glob(os.path.join(root, "*", "*", "README.md"))):
 
     text = open(readme).read()
     m = re.search(r"Apple Feedback:\s*(FB\d+)", text)
-    fb = m.group(1) if m else "none filed"
+    if m:
+        fb = m.group(1)
+    elif re.search(r"Apple Feedback:\s*not worth filing", text):
+        fb = "[not worth filing](#findings-not-filed-with-apple)"
+    else:
+        fb = "none filed"
 
     by_strength = {}
     for result_path in sorted(glob.glob(os.path.join(method_dir, "results", "*.json"))):

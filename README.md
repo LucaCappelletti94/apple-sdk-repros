@@ -9,8 +9,8 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 <!-- sitemap:start -->
 | Framework | Method | Status | Feedback |
 |---|---|---|---|
-| AppKit | [`+[NSColorPanel sharedColorPanel]` lazy-init race](AppKit/sharedColorPanel-lazy-init/) | fault: reproduced | none filed |
-| AppKit | [`+[NSDocumentController sharedDocumentController]` lazy-init race](AppKit/sharedDocumentController-lazy-init/) | fault: reproduced | none filed |
+| AppKit | [`+[NSColorPanel sharedColorPanel]` lazy-init race](AppKit/sharedColorPanel-lazy-init/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| AppKit | [`+[NSDocumentController sharedDocumentController]` lazy-init race](AppKit/sharedDocumentController-lazy-init/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
 | DeviceCheck | [`-[DCAppAttestService appAttestController]` lazy-init race](DeviceCheck/appAttestController-lazy-init/) | fault: reproduced | FB25187723 |
 | Foundation | [`+[NSAppleEventManager sharedAppleEventManager]` lazy-init race](Foundation/sharedAppleEventManager-lazy-init/) | fault: reproduced | FB25188007 |
 | Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | FB25188007 |
@@ -21,13 +21,17 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 | ScreenCaptureKit | [`-[SCContentSharingPicker defaultConfiguration]` lazy-init race](ScreenCaptureKit/defaultConfiguration-lazy-init/) | fault: reproduced | FB25187882 |
 | ScreenCaptureKit | [`-[SCContentSharingPicker setDefaultConfiguration:]` setter race](ScreenCaptureKit/defaultConfiguration-setter-race/) | fault: reproduced | FB25187882 |
 | ScreenCaptureKit | [`-[SCContentSharingPicker setMaximumStreamCount:]` setter race](ScreenCaptureKit/maximumStreamCount-setter-race/) | fault: reproduced | FB25187882 |
-| UIKit | [`-[UIMenuController setMenuItems:]` setter race](UIKit/menuItems-setter-race/) | fault: reproduced | none filed |
-| UIKit | [`-[UIPrintInteractionController setPrintFormatter:]` setter race](UIKit/printFormatter-setter-race/) | fault: reproduced | none filed |
-| UIKit | [`-[UIPrintInteractionController setPrintInfo:]` unlocked-store race](UIKit/printInfo-setter-race/) | fault: reproduced | none filed |
-| UIKit | [`-[UIPrintInteractionController setPrintPageRenderer:]` setter race](UIKit/printPageRenderer-setter-race/) | fault: reproduced | none filed |
-| UIKit | [`-[UIPrintInteractionController setPrintingItems:]` setter race](UIKit/printingItems-setter-race/) | fault: reproduced | none filed |
-| UIKit | [`+[UIAccelerometer sharedAccelerometer]` lazy-init race](UIKit/sharedAccelerometer-lazy-init/) | fault: reproduced | none filed |
-| UIKit | [`+[UIMenuController sharedMenuController]` lazy-init race](UIKit/sharedMenuController-lazy-init/) | fault: reproduced | none filed |
-| UIKit | [`+[UIPrintInteractionController sharedPrintController]` lazy-init race](UIKit/sharedPrintController-lazy-init/) | fault: reproduced | none filed |
+| UIKit | [`-[UIMenuController setMenuItems:]` setter race](UIKit/menuItems-setter-race/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`-[UIPrintInteractionController setPrintFormatter:]` setter race](UIKit/printFormatter-setter-race/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`-[UIPrintInteractionController setPrintInfo:]` unlocked-store race](UIKit/printInfo-setter-race/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`-[UIPrintInteractionController setPrintPageRenderer:]` setter race](UIKit/printPageRenderer-setter-race/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`-[UIPrintInteractionController setPrintingItems:]` setter race](UIKit/printingItems-setter-race/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`+[UIAccelerometer sharedAccelerometer]` lazy-init race](UIKit/sharedAccelerometer-lazy-init/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`+[UIMenuController sharedMenuController]` lazy-init race](UIKit/sharedMenuController-lazy-init/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
+| UIKit | [`+[UIPrintInteractionController sharedPrintController]` lazy-init race](UIKit/sharedPrintController-lazy-init/) | fault: reproduced | [not worth filing](#findings-not-filed-with-apple) |
 <!-- sitemap:end -->
+
+## Findings not filed with Apple
+
+The AppKit and UIKit findings marked "not worth filing" race classes that Apple declares main-thread-only (`NS_SWIFT_UI_ACTOR`, imported as `@MainActor` in Swift). Their repros call them from several background threads at once, which breaks that contract. On the main thread alone, their unlocked lazy initialization and property stores can never race. They stay here to show what breaking the contract does.
 

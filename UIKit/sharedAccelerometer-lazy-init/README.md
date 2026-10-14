@@ -1,6 +1,6 @@
 # `+[UIAccelerometer sharedAccelerometer]` lazy-init race
 
-Apple Feedback: not yet filed.
+Apple Feedback: not worth filing. Apple declares `UIAccelerometer` main-thread-only, see [why](../../README.md#findings-not-filed-with-apple).
 
 ## What this tests
 

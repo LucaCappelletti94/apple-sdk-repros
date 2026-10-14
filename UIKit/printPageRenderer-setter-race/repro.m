@@ -2,8 +2,8 @@
 //   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks \
 //   -framework Foundation -framework UIKit repro.m -o repro
 //
-// ./repro 1000       8 threads race -[UIPrintInteractionController setPrintPageRenderer:] on the shared instance, fresh value per round
-// ./repro 5000 warm  control: the same sets run single-threaded
+// ./repro 10000       8 threads race -[UIPrintInteractionController setPrintPageRenderer:] on the shared instance, fresh value per round
+// ./repro 50000 warm  control: the same sets run single-threaded
 //
 // The shared instance is resolved once, before the threads start; only the setter call inside the loop is the race.
 #import <Foundation/Foundation.h>

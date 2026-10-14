@@ -43,9 +43,13 @@ for readme in sorted(glob.glob(os.path.join(root, "*", "*", "README.md"))):
     else:
         max_strength = max(by_strength, key=lambda s: STRENGTH_ORDER.index(s) if s in STRENGTH_ORDER else -1)
         verdicts = by_strength[max_strength]
-        # a verdict that isn't phrased as a negative ("not-...", "no-...") is the
-        # more newsworthy one to lead with when several runs disagree
-        headline = next((v for v in sorted(verdicts) if not v.startswith(("not-", "no-"))), sorted(verdicts)[0])
+        # When runs disagree, lead with a positive verdict, then inconclusive,
+        # then a negative one ("not-...", "no-...").
+        def rank(v):
+            if v.startswith(("not-", "no-")):
+                return 2
+            return 1 if v == "inconclusive" else 0
+        headline = min(verdicts, key=lambda v: (rank(v), v))
         status = f"{max_strength}: {headline}"
 
     title = text.splitlines()[0].lstrip("# ").strip()

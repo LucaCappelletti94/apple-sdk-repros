@@ -35,6 +35,7 @@ jobs:
           sh tests/make-result-test.sh
           sh tests/make-race-window-result-test.sh
           sh tests/make-crash-result-test.sh
+          sh tests/make-sitemap-test.sh
 
       - name: Every repro.m compiles
         run: |

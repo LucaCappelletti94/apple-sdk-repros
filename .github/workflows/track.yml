@@ -32,19 +32,32 @@ jobs:
           xcode_version=$(xcodebuild -version | head -1 | awk '{print $2}')
           ./scripts/track-all.sh "gh-actions-${{ matrix.runner }}" "$xcode_version" 900
 
-      - name: Commit the results if they changed
+      - name: Commit the results and the sitemap if they changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- */*/results
           git diff --cached --quiet && exit 0
           git commit -m "Track every method on ${{ matrix.runner }}"
+          results_commit=$(git rev-parse HEAD)
+          # The other runners push concurrently, so the sitemap is regenerated
+          # after each rebase from the results then on main.
           for attempt in 1 2 3 4 5; do
             git fetch origin main
-            git rebase origin/main && git push origin HEAD:main && break
-            git rebase --abort 2>/dev/null || true
+            git reset -q --hard "$results_commit"
+            if git rebase origin/main; then
+              results_commit=$(git rev-parse HEAD)
+              ./scripts/make-sitemap.sh
+              git add README.md
+              git diff --cached --quiet || git commit -q --amend --no-edit
+              git push origin HEAD:main && exit 0
+            else
+              git rebase --abort
+            fi
             sleep $((attempt * 10))
           done
+          echo "could not push the results after 5 attempts" >&2
+          exit 1
 
       - name: Fail if any method failed or timed out
         if: steps.run.outcome == 'failure'

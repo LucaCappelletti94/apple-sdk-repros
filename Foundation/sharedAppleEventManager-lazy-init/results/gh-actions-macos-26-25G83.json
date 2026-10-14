@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-macos-26",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "26.6",
+  "command": "clang -O2 -fobjc-arc -framework Foundation repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T17:03:00Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\nthread 1 got 0x100c0d730, thread 0 got 0x100c11740\nthread 2 got 0x100c0d110, thread 0 got 0x100c11740\nthread 3 got 0x100c0d740, thread 0 got 0x100c11740\nthread 4 got 0x100c10ef0, thread 0 got 0x100c11740\nthread 5 got 0x100c10f00, thread 0 got 0x100c11740\nthread 6 got 0x100c10f10, thread 0 got 0x100c11740\nthread 7 got 0x100c0d830, thread 0 got 0x100c11740\nDIVERGENCE: 7 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nwarm: all 8 threads got the same pointer 0x102eb8080\n2026-10-14T17:03:01Z\n"
+}

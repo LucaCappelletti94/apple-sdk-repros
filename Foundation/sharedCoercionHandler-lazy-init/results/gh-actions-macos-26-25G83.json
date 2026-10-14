@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-macos-26",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "26.6",
+  "command": "clang -O2 -fobjc-arc -framework Foundation repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T17:03:02Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ndiverged: 2 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nall 8 threads agree on 0x104f9c170\n2026-10-14T17:03:02Z\n"
+}

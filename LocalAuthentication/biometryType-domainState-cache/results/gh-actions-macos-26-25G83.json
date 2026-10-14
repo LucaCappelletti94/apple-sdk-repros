@@ -1,0 +1,35 @@
+{
+  "platform": "gh-actions-macos-26",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": "26.6",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "dynamic-window",
+  "runs": [
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 720,
+      "overlaps": 493
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 348,
+      "overlaps": 211
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 398,
+      "overlaps": 261
+    }
+  ],
+  "verdict": "window-detected",
+  "raw_output": "2026-10-14T17:03:05Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nreaders=8 writers=4 seconds=5 calls=720 overlaps=493\nreaders=8 writers=4 seconds=5 calls=348 overlaps=211\nreaders=8 writers=4 seconds=5 calls=398 overlaps=261\n2026-10-14T17:03:21Z\n"
+}

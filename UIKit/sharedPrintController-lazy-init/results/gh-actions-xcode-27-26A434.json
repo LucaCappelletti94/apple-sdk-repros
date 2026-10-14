@@ -5,7 +5,7 @@
     "build": "26A434"
   },
   "xcode_version": "27.0",
-  "command": "clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro",
+  "command": "clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode_27.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro",
   "strength": "fault",
   "runs": [
     {
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T17:17:52Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ndiverged: first callers of +[UIPrintInteractionController sharedPrintController] returned different objects\nrace warm rounds=1 exit=0\nwarm: all 8 threads agree\n2026-10-14T17:17:52Z\n"
+  "raw_output": "2026-10-14T18:16:58Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ndiverged: first callers of +[UIPrintInteractionController sharedPrintController] returned different objects\nrace warm rounds=1 exit=0\nwarm: all 8 threads agree\n2026-10-14T18:16:58Z\n"
 }

@@ -13,7 +13,7 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 0
+      "overlaps": 7
     },
     {
       "readers": 8,
@@ -27,7 +27,7 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 6
+      "overlaps": 7
     },
     {
       "readers": 8,
@@ -41,7 +41,7 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 0
+      "overlaps": 7
     },
     {
       "readers": 8,
@@ -55,7 +55,7 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 0
+      "overlaps": 7
     },
     {
       "readers": 8,
@@ -69,16 +69,16 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 1
+      "overlaps": 7
     },
     {
       "readers": 8,
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 2
+      "overlaps": 7
     }
   ],
   "verdict": "window-detected",
-  "raw_output": "2026-10-14T17:17:06Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=6\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=1\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\n2026-10-14T17:17:06Z\n"
+  "raw_output": "2026-10-14T18:16:27Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\n2026-10-14T18:16:28Z\n"
 }

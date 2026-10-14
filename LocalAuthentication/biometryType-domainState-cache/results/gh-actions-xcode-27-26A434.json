@@ -12,24 +12,24 @@
       "readers": 8,
       "writers": 4,
       "seconds": 5,
-      "calls": 709,
-      "overlaps": 402
+      "calls": 1034,
+      "overlaps": 575
     },
     {
       "readers": 8,
       "writers": 4,
       "seconds": 5,
-      "calls": 350,
-      "overlaps": 190
+      "calls": 430,
+      "overlaps": 269
     },
     {
       "readers": 8,
       "writers": 4,
       "seconds": 5,
-      "calls": 896,
-      "overlaps": 556
+      "calls": 472,
+      "overlaps": 272
     }
   ],
   "verdict": "window-detected",
-  "raw_output": "2026-10-14T17:01:41Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=4 seconds=5 calls=709 overlaps=402\nreaders=8 writers=4 seconds=5 calls=350 overlaps=190\nreaders=8 writers=4 seconds=5 calls=896 overlaps=556\n2026-10-14T17:02:03Z\n"
+  "raw_output": "2026-10-14T18:16:05Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=4 seconds=5 calls=1034 overlaps=575\nreaders=8 writers=4 seconds=5 calls=430 overlaps=269\nreaders=8 writers=4 seconds=5 calls=472 overlaps=272\n2026-10-14T18:16:25Z\n"
 }

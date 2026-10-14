@@ -13,55 +13,6 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
-      "overlaps": 0
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 4
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 0
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 0
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 0
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 0
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
-      "overlaps": 0
-    },
-    {
-      "readers": 8,
-      "writers": 0,
-      "seconds": 0,
-      "calls": 8,
       "overlaps": 4
     },
     {
@@ -76,9 +27,58 @@
       "writers": 0,
       "seconds": 0,
       "calls": 8,
+      "overlaps": 1
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
       "overlaps": 4
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 4
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
     }
   ],
   "verdict": "window-detected",
-  "raw_output": "2026-10-14T17:18:22Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=0\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\n2026-10-14T17:18:22Z\n"
+  "raw_output": "2026-10-14T18:16:42Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\nreaders=8 writers=0 seconds=0 calls=8 overlaps=1\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\n2026-10-14T18:16:42Z\n"
 }

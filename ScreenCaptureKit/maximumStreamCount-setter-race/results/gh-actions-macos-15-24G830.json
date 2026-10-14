@@ -11,7 +11,7 @@
     {
       "mode": "cold",
       "rounds": 1000,
-      "exit_code": 139
+      "exit_code": 133
     },
     {
       "mode": "warm",
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T17:18:30Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nrace cold rounds=1000 exit=139\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds (40000 sets)\n2026-10-14T17:18:30Z\n"
+  "raw_output": "2026-10-14T18:16:54Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nrace cold rounds=1000 exit=133\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds (40000 sets)\n2026-10-14T18:16:54Z\n"
 }

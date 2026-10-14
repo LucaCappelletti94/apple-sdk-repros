@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-macos-15",
+  "os": {
+    "product_version": "15.7.9",
+    "build": "24G830"
+  },
+  "xcode_version": "16.4",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework QuartzCore -framework CoreGraphics repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T17:18:24Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nrace cold rounds=1 exit=1\ndiverged: 8 distinct pointers among 8\nrace warm rounds=1 exit=0\nagreed: 8 identical pointers (0x600002efc4e0)\n2026-10-14T17:18:24Z\n"
+}

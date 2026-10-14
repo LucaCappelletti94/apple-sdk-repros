@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-macos-15",
+  "os": {
+    "product_version": "15.7.9",
+    "build": "24G830"
+  },
+  "xcode_version": "16.4",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework DeviceCheck repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1000,
+      "exit_code": 134
+    },
+    {
+      "mode": "warm",
+      "rounds": 5000,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T17:02:49Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.7.9\nBuildVersion:\t\t24G830\nrace cold rounds=1000 exit=134\n*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[_NSXPCConnectionExpectedReplies appAttestType]: unrecognized selector sent to instance 0x6000024511a0'\n*** First throw call stack:\n(\n\t0   CoreFoundation                      0x000000018abd78a0 __exceptionPreprocess + 176\n\t1   libobjc.A.dylib                     0x000000018a69ab90 objc_exception_throw + 88\n\t2   CoreFoundation                      0x000000018ac94800 -[NSObject(NSObject) __retain_OA] + 0\n\t3   CoreFoundation                      0x000000018ab459dc ___forwarding___ + 1500\n\t4   CoreFoundation                      0x000000018ab45340 _CF_forwarding_prep_0 + 96\n\t5   DeviceCheck                         0x00000001e9987398 -[DCAppAttestController isSupportedWithError:] + 240\n\t6   DeviceCheck                         0x00000001e99828dc -[DCAppAttestController isSupported] + 56\n\t7   DeviceCheck                         0x00000001e998a16c -[DCAppAttestService isSupported] + 36\n\t8   repro                               0x0000000104a50a04 worker + 96\n\t9   libsystem_pthread.dylib             0x000000018aa7bbc8 _pthread_start + 136\n\t10  libsystem_pthread.dylib             0x000000018aa76b80 thread_start + 8\n)\nlibc++abi: terminating due to uncaught exception of type NSException\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds\n2026-10-14T17:02:49Z\n"
+}

@@ -19,7 +19,7 @@ clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.
 ./repro direct 1 16000000   # single-threaded control
 ```
 
-`direct` calls `+newInstanceId` through a private selector, used only to measure how far the counter moved. Every `LAContext` construction calls the same counter, so `direct` exercises nothing that `new` does not reach through public API. `run.sh` records the `direct` runs only. Concurrent `new` runs slow the per-user `coreauthd` to about 150 ms per `LAContext` for minutes, for every process of that user, so a tracked run of them cannot finish.
+`direct` calls `+newInstanceId` through a private selector, used only to measure how far the counter moved. Every `LAContext` construction calls the same counter, so `direct` exercises nothing that `new` does not reach through public API. `run.sh` records the `direct` runs only. Concurrent `new` runs slow the per-user `coreauthd` to about 150 ms per `LAContext` for minutes, for every process of that user (FB25189654), so a tracked run of them cannot finish.
 
 ## Reading a result
 

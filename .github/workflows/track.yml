@@ -18,47 +18,34 @@ jobs:
       fail-fast: false
       matrix:
         runner: [macos-26, macos-15, xcode-27]
-        method:
-          - LocalAuthentication/newInstanceId-newCommandId-race
-          - LocalAuthentication/biometryType-domainState-cache
-          - DeviceCheck/appAttestController-lazy-init
-          - ScreenCaptureKit/defaultConfiguration-lazy-init
-          - QuartzCore/emitterCellColor-cache
-          - QuartzCore/animationSpeed-cache
-          - UIKit/sharedPrintController-lazy-init
-          - UIKit/sharedMenuController-lazy-init
-          - UIKit/sharedAccelerometer-lazy-init
-          - AppKit/sharedDocumentController-lazy-init
-          - AppKit/sharedColorPanel-lazy-init
-          - Foundation/sharedCoercionHandler-lazy-init
-          - Foundation/sharedAppleEventManager-lazy-init
-          - ScreenCaptureKit/maximumStreamCount-setter-race
-          - ScreenCaptureKit/defaultConfiguration-setter-race
-          - UIKit/printingItems-setter-race
-          - UIKit/printFormatter-setter-race
-          - UIKit/printPageRenderer-setter-race
-          - UIKit/printInfo-setter-race
-          - UIKit/menuItems-setter-race
     runs-on: ${{ matrix.runner }}
+    # One job per image runs every method in turn, which stays within
+    # GitHub's five concurrent macOS jobs.
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run the reproduction and record the result
-        working-directory: ${{ matrix.method }}
+      - name: Run every reproduction and record the results
+        id: run
+        continue-on-error: true
         run: |
           xcode_version=$(xcodebuild -version | head -1 | awk '{print $2}')
-          ./run.sh "gh-actions-${{ matrix.runner }}" "$xcode_version"
+          ./scripts/track-all.sh "gh-actions-${{ matrix.runner }}" "$xcode_version" 900
 
-      - name: Commit the result if it changed
+      - name: Commit the results if they changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "${{ matrix.method }}/results"
+          git add -- */*/results
           git diff --cached --quiet && exit 0
-          git commit -m "Track ${{ matrix.method }} on ${{ matrix.runner }}"
+          git commit -m "Track every method on ${{ matrix.runner }}"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             git rebase origin/main && git push origin HEAD:main && break
             git rebase --abort 2>/dev/null || true
             sleep $((attempt * 10))
           done
+
+      - name: Fail if any method failed or timed out
+        if: steps.run.outcome == 'failure'
+        run: exit 1

@@ -11,16 +11,16 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 |---|---|---|---|
 | AppKit | [`+[NSColorPanel sharedColorPanel]` lazy-init race](AppKit/sharedColorPanel-lazy-init/) | fault: reproduced | none filed |
 | AppKit | [`+[NSDocumentController sharedDocumentController]` lazy-init race](AppKit/sharedDocumentController-lazy-init/) | fault: reproduced | none filed |
-| DeviceCheck | [`-[DCAppAttestService appAttestController]` lazy-init race](DeviceCheck/appAttestController-lazy-init/) | fault: reproduced | none filed |
-| Foundation | [`+[NSAppleEventManager sharedAppleEventManager]` lazy-init race](Foundation/sharedAppleEventManager-lazy-init/) | fault: reproduced | none filed |
-| Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | none filed |
+| DeviceCheck | [`-[DCAppAttestService appAttestController]` lazy-init race](DeviceCheck/appAttestController-lazy-init/) | fault: reproduced | FB25187723 |
+| Foundation | [`+[NSAppleEventManager sharedAppleEventManager]` lazy-init race](Foundation/sharedAppleEventManager-lazy-init/) | fault: reproduced | FB25188007 |
+| Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | FB25188007 |
 | LocalAuthentication | [`-[LAContext biometryType]` / `-[LAContext domainState]` cached-pointer race](LocalAuthentication/biometryType-domainState-cache/) | dynamic-window: window-detected | FB25157119 |
 | LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
-| QuartzCore | [`+[CAAnimation defaultValueForKey:]` lazy-cache race](QuartzCore/animationSpeed-cache/) | dynamic-window: window-detected | none filed |
-| QuartzCore | [`+[CAEmitterCell defaultValueForKey:]` lazy-init race](QuartzCore/emitterCellColor-cache/) | fault: reproduced | none filed |
-| ScreenCaptureKit | [`-[SCContentSharingPicker defaultConfiguration]` lazy-init race](ScreenCaptureKit/defaultConfiguration-lazy-init/) | fault: reproduced | none filed |
-| ScreenCaptureKit | [`-[SCContentSharingPicker setDefaultConfiguration:]` setter race](ScreenCaptureKit/defaultConfiguration-setter-race/) | fault: reproduced | none filed |
-| ScreenCaptureKit | [`-[SCContentSharingPicker setMaximumStreamCount:]` setter race](ScreenCaptureKit/maximumStreamCount-setter-race/) | fault: reproduced | none filed |
+| QuartzCore | [`+[CAAnimation defaultValueForKey:]` lazy-cache race](QuartzCore/animationSpeed-cache/) | dynamic-window: window-detected | FB25188025 |
+| QuartzCore | [`+[CAEmitterCell defaultValueForKey:]` lazy-init race](QuartzCore/emitterCellColor-cache/) | fault: reproduced | FB25188025 |
+| ScreenCaptureKit | [`-[SCContentSharingPicker defaultConfiguration]` lazy-init race](ScreenCaptureKit/defaultConfiguration-lazy-init/) | fault: reproduced | FB25187882 |
+| ScreenCaptureKit | [`-[SCContentSharingPicker setDefaultConfiguration:]` setter race](ScreenCaptureKit/defaultConfiguration-setter-race/) | fault: reproduced | FB25187882 |
+| ScreenCaptureKit | [`-[SCContentSharingPicker setMaximumStreamCount:]` setter race](ScreenCaptureKit/maximumStreamCount-setter-race/) | fault: reproduced | FB25187882 |
 | UIKit | [`-[UIMenuController setMenuItems:]` setter race](UIKit/menuItems-setter-race/) | fault: reproduced | none filed |
 | UIKit | [`-[UIPrintInteractionController setPrintFormatter:]` setter race](UIKit/printFormatter-setter-race/) | fault: reproduced | none filed |
 | UIKit | [`-[UIPrintInteractionController setPrintInfo:]` unlocked-store race](UIKit/printInfo-setter-race/) | fault: reproduced | none filed |

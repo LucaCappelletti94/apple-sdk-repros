@@ -1,6 +1,6 @@
 # `+[CAAnimation defaultValueForKey:]` lazy-cache race
 
-Apple Feedback: not yet filed.
+Apple Feedback: FB25188025, the `CAEmitterCell` report, which names this method as the same unguarded cache with no visible effect (filed, open as of 2026-10-14, Apple has not replied).
 
 ## What this tests
 

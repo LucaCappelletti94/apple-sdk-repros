@@ -19,17 +19,17 @@ clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.
 ./repro direct 1 16000000   # single-threaded control
 ```
 
-`direct` calls `+newInstanceId` through a private selector, used only to measure how far the counter moved; it does not touch anything not already reachable through `new`. `new` only goes through public API.
+`direct` calls `+newInstanceId` through a private selector, used only to measure how far the counter moved. Every `LAContext` construction calls the same counter, so `direct` exercises nothing that `new` does not reach through public API. `run.sh` records the `direct` runs only. Concurrent `new` runs slow the per-user `coreauthd` to about 150 ms per `LAContext` for minutes, for every process of that user, so a tracked run of them cannot finish.
 
 ## Reading a result
 
-Each line reports `expected N increments, counter advanced M, lost N-M`. `lost` greater than zero on `new` means two or more `LAContext` objects, created through nothing but public API, ended up sharing an instance ID. `direct` isolates the counter from the XPC round trip each real construction makes, so it loses a much larger fraction, which is expected and not itself news; `new` losing anything is the result that matters.
+Each line reports `expected N increments, counter advanced M, lost N-M`. `lost` greater than zero on the repeated `direct` runs is the race. They lose most of their increments because nothing spaces the threads out. `new` loses far less often, because each construction waits on an XPC round trip to `coreauthd`. On macOS 26.6.2 it lost one increment in 1,600 and one in 4,000, which shows two `LAContext` objects created through public API alone can share an instance ID.
 
 The single-threaded control (`direct 1 …`) should always show `lost 0`. If it doesn't, something about the run itself is suspect, not the framework.
 
 ## Platforms
 
-Reproduces on macOS. Not meaningfully testable on iOS/watchOS Simulator or in a way that differs from macOS, since this is pure Foundation/Objective-C runtime logic with no biometric-hardware dependency; a Simulator result would be redundant with the macOS one rather than additional evidence, so none is recorded here.
+Reproduces on macOS 26.6.2, on the host and in a tart VM, and on the iOS 27.0 Simulator through `scripts/run-in-ios-simulator.sh`.
 
 ## Results
 

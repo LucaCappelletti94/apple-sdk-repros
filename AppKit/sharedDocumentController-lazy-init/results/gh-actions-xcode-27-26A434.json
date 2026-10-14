@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-xcode-27",
+  "os": {
+    "product_version": "27.0.1",
+    "build": "26A434"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework AppKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T16:58:43Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ncold: 1 of 8 first-callers returned a different pointer than the first caller\nrace warm rounds=1 exit=0\nwarm: all 8 first-callers returned the same pointer\n2026-10-14T16:58:43Z\n"
+}

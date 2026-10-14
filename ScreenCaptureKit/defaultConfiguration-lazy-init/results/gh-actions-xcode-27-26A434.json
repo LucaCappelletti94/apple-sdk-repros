@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-xcode-27",
+  "os": {
+    "product_version": "27.0.1",
+    "build": "26A434"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-10-14T17:17:11Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\nresults[0] = 0x102aaccc0\nresults[1] = 0x102aad080\nresults[2] = 0x102aad040\nresults[3] = 0x102aad200\nresults[4] = 0x102aad2a0\nresults[5] = 0x102aad340\nresults[6] = 0x102aad3e0\nresults[7] = 0x102aacd00\nfault: 7 of 8 threads got a different pointer than results[0]\nrace warm rounds=1 exit=0\nresults[0] = 0x104c38d00\nresults[1] = 0x104c38d00\nresults[2] = 0x104c38d00\nresults[3] = 0x104c38d00\nresults[4] = 0x104c38d00\nresults[5] = 0x104c38d00\nresults[6] = 0x104c38d00\nresults[7] = 0x104c38d00\nall 8 threads agree\n2026-10-14T17:17:12Z\n"
+}

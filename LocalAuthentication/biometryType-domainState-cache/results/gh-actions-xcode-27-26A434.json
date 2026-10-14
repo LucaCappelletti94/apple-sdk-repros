@@ -1,0 +1,35 @@
+{
+  "platform": "gh-actions-xcode-27",
+  "os": {
+    "product_version": "27.0.1",
+    "build": "26A434"
+  },
+  "xcode_version": "27.0",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
+  "strength": "dynamic-window",
+  "runs": [
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 709,
+      "overlaps": 402
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 350,
+      "overlaps": 190
+    },
+    {
+      "readers": 8,
+      "writers": 4,
+      "seconds": 5,
+      "calls": 896,
+      "overlaps": 556
+    }
+  ],
+  "verdict": "window-detected",
+  "raw_output": "2026-10-14T17:01:41Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=4 seconds=5 calls=709 overlaps=402\nreaders=8 writers=4 seconds=5 calls=350 overlaps=190\nreaders=8 writers=4 seconds=5 calls=896 overlaps=556\n2026-10-14T17:02:03Z\n"
+}

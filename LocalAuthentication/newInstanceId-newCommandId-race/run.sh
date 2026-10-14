@@ -51,8 +51,6 @@ esac
     run_repro direct 1 16000000
     # shellcheck disable=SC2034  # loop variable only counts repetitions
     for i in 1 2 3; do run_repro direct 16 1000000; done
-    # shellcheck disable=SC2034  # loop variable only counts repetitions
-    for i in 1 2 3; do run_repro new 8 3000; done
     date -u +%Y-%m-%dT%H:%M:%SZ
 } > "$here/output.txt" 2>&1
 

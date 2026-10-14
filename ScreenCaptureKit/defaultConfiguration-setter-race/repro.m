@@ -1,6 +1,6 @@
 // clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro
-// ./repro 3000       8 threads each call setDefaultConfiguration: 3000 times on the shared picker
-// ./repro 3000 warm  control: single-threaded, 3000 sequential sets
+// ./repro 30000       8 threads each call setDefaultConfiguration: 30000 times on the shared picker
+// ./repro 30000 warm  control: single-threaded, 30000 sequential sets
 //
 // setDefaultConfiguration: is the standard unlocked ARC strong store with no lock
 // (safety-audit ScreenCaptureKit.md line 30). sharedPicker is dispatch_once, called once before the race.

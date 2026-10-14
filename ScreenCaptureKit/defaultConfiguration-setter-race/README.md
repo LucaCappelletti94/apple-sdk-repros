@@ -14,13 +14,13 @@ The getter's lazy-init race on the same property is already covered by `ScreenCa
 
 ```sh
 clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro
-./repro 3000        # 8 threads each call setDefaultConfiguration: 3000 times on the shared picker
-./repro 3000 warm    # control: single-threaded, 3000 sequential sets
+./repro 30000       # 8 threads each call setDefaultConfiguration: 30000 times on the shared picker
+./repro 30000 warm  # control: single-threaded, 30000 sequential sets
 ```
 
 ## Reading a result
 
-The cold run is expected to crash with `SIGSEGV` (exit 139) inside `objc_release` on a double-released configuration, well before completing all rounds. The warm control calls the setter sequentially on a single thread, so it always completes cleanly. A crash there would mean the harness is broken, not the framework.
+The cold run is expected to crash with `SIGSEGV` (exit 139) inside `objc_release` on a double-released configuration, well before completing all rounds. On a 4-core VM, 3,000 rounds crashed in only 1 of 20 runs and 30,000 rounds in 20 of 20, so `run.sh` uses 30,000. The warm control calls the setter sequentially on a single thread, so it always completes cleanly. A crash there would mean the harness is broken, not the framework.
 
 `run.sh` retries the cold run as a fresh child process up to 5 times, stopping at the first crash, then runs the warm control once. The result is recorded via `scripts/make-crash-result.sh` at `fault` strength (see `EVIDENCE.md`).
 

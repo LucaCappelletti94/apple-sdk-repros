@@ -20,18 +20,18 @@ sdk=$(xcrun --sdk macosx --show-sdk-path)
 clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot "$sdk" -iframework "$sdk/System/iOSSupport/System/Library/Frameworks" -framework Foundation -framework UIKit "$here/repro.m" -o "$here/repro"
 
 set +e
-"$here/repro" 1000 > "$here/cold.out" 2>&1
+"$here/repro" 10000 > "$here/cold.out" 2>&1
 cold_exit=$?
-"$here/repro" 5000 warm > "$here/warm.out" 2>&1
+"$here/repro" 50000 warm > "$here/warm.out" 2>&1
 warm_exit=$?
 set -e
 
 {
     date -u +%Y-%m-%dT%H:%M:%SZ
     sw_vers
-    echo "race cold rounds=1000 exit=$cold_exit"
+    echo "race cold rounds=10000 exit=$cold_exit"
     cat "$here/cold.out"
-    echo "race warm rounds=5000 exit=$warm_exit"
+    echo "race warm rounds=50000 exit=$warm_exit"
     cat "$here/warm.out"
     date -u +%Y-%m-%dT%H:%M:%SZ
 } > "$here/output.txt"

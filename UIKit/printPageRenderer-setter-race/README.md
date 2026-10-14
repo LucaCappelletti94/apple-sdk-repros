@@ -14,8 +14,8 @@ The class is resolved through the ObjC runtime, `NSClassFromString(@"UIPrintInte
 
 ```sh
 clang -O2 -fobjc-arc -target arm64-apple-ios17.0-macabi -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk/System/iOSSupport/System/Library/Frameworks -framework Foundation -framework UIKit repro.m -o repro
-./repro 1000       # 8 threads race the setter on the shared instance, a fresh NSObject each round
-./repro 5000 warm  # control: the same 5000 sets run single-threaded
+./repro 10000      # 8 threads race the setter on the shared instance, a fresh NSObject each round
+./repro 50000 warm # control: the same 50000 sets run single-threaded
 ```
 
 Built for Mac Catalyst because UIKit does not link natively on macOS; the Catalyst slice is the Mac's UIKit. The probe value is a plain fresh `[[NSObject alloc] init]` each round: `printPageRenderer` is a strong property, not a `copy` property, so a plain `NSObject` works directly.
@@ -24,7 +24,7 @@ Built for Mac Catalyst because UIKit does not link natively on macOS; the Cataly
 
 The cold run is expected to crash: a `SIGSEGV` (exit 139) as the double-release over-frees a value, or the freed value's memory is reused and a later touch faults. Either way `./repro` exits abnormally rather than printing `completed N rounds`. The warm control runs the same 5000 sets single-threaded, so it always completes cleanly; a crash there would mean the harness itself is broken, not the framework.
 
-Measured on the host today: the cold run crashed with `SIGSEGV` (exit 139) in every trial tried, including a trial of only 50 rounds, so it dies well inside the 1000-round bound. The single-threaded 5000-set warm control completed cleanly.
+Measured on the host today: the cold run crashed with `SIGSEGV` (exit 139) in every trial tried, including a trial of only 50 rounds, so it dies well inside the 1000-round bound. The single-threaded 5000-set warm control completed cleanly. One 1,000-round run on a GitHub-hosted runner completed without crashing, so `run.sh` uses 10,000 rounds and a 50,000-set warm control.
 
 ## Platforms
 

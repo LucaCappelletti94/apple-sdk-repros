@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-macos-15",
+  "os": {
+    "product_version": "15.8.2",
+    "build": "24H232"
+  },
+  "xcode_version": "16.4",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 1,
+      "exit_code": 1
+    },
+    {
+      "mode": "warm",
+      "rounds": 1,
+      "exit_code": 1
+    }
+  ],
+  "verdict": "inconclusive",
+  "raw_output": "2026-11-01T06:30:35Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.8.2\nBuildVersion:\t\t24H232\nrace cold rounds=1 exit=1\nresults[0] = 0x60000075c240\nresults[1] = 0x60000075c200\nresults[2] = 0x600000750100\nresults[3] = 0x600000750140\nresults[4] = 0x600000758500\nresults[5] = 0x600000758480\nresults[6] = 0x600000750180\nresults[7] = 0x600000758540\nfault: 7 of 8 threads got a different pointer than results[0]\nrace warm rounds=1 exit=1\nresults[0] = 0x600002c08480\nresults[1] = 0x600002c000c0\nresults[2] = 0x600002c000c0\nresults[3] = 0x600002c0c280\nresults[4] = 0x600002c08480\nresults[5] = 0x600002c000c0\nresults[6] = 0x600002c0c280\nresults[7] = 0x600002c08480\nfault: 5 of 8 threads got a different pointer than results[0]\n2026-11-01T06:30:35Z\n"
+}

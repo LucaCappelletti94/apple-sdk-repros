@@ -1,0 +1,24 @@
+{
+  "platform": "gh-actions-macos-15",
+  "os": {
+    "product_version": "15.8.2",
+    "build": "24H232"
+  },
+  "xcode_version": "16.4",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro",
+  "strength": "fault",
+  "runs": [
+    {
+      "mode": "cold",
+      "rounds": 30000,
+      "exit_code": 139
+    },
+    {
+      "mode": "warm",
+      "rounds": 30000,
+      "exit_code": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-11-01T06:30:38Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.8.2\nBuildVersion:\t\t24H232\nrace cold rounds=30000 exit=139\nrace warm rounds=30000 exit=0\ncompleted 30000 rounds\n2026-11-01T06:30:38Z\n"
+}

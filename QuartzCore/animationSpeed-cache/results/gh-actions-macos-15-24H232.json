@@ -1,0 +1,84 @@
+{
+  "platform": "gh-actions-macos-15",
+  "os": {
+    "product_version": "15.8.2",
+    "build": "24H232"
+  },
+  "xcode_version": "16.4",
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework QuartzCore repro.m -o repro",
+  "strength": "dynamic-window",
+  "runs": [
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 1
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 3
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 4
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 2
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    },
+    {
+      "readers": 8,
+      "writers": 0,
+      "seconds": 0,
+      "calls": 8,
+      "overlaps": 7
+    }
+  ],
+  "verdict": "window-detected",
+  "raw_output": "2026-11-01T06:30:31Z\nProductName:\t\tmacOS\nProductVersion:\t\t15.8.2\nBuildVersion:\t\t24H232\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=1\nreaders=8 writers=0 seconds=0 calls=8 overlaps=3\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=4\nreaders=8 writers=0 seconds=0 calls=8 overlaps=2\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\n2026-11-01T06:30:31Z\n"
+}

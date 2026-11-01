@@ -4,21 +4,21 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework ScreenCaptureKit repro.m -o repro",
   "strength": "fault",
   "runs": [
     {
       "mode": "cold",
-      "rounds": 3000,
+      "rounds": 30000,
       "exit_code": 139
     },
     {
       "mode": "warm",
-      "rounds": 3000,
+      "rounds": 30000,
       "exit_code": 0
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:34Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=3000 exit=139\nrace warm rounds=3000 exit=0\ncompleted 3000 rounds\n2026-10-14T18:16:34Z\n"
+  "raw_output": "2026-11-01T06:30:26Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=30000 exit=139\nrace warm rounds=30000 exit=0\ncompleted 30000 rounds\n2026-11-01T06:30:26Z\n"
 }

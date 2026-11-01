@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework AppKit repro.m -o repro",
   "strength": "fault",
   "runs": [
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:13:14Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ncold: 1 of 8 first-callers returned a different pointer than the first caller\nrace warm rounds=1 exit=0\nwarm: all 8 first-callers returned the same pointer\n2026-10-14T18:13:14Z\n"
+  "raw_output": "2026-11-01T06:26:59Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ncold: 3 of 8 first-callers returned a different pointer than the first caller\nrace warm rounds=1 exit=0\nwarm: all 8 first-callers returned the same pointer\n2026-11-01T06:26:59Z\n"
 }

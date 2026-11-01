@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
   "strength": "fault",
   "runs": [
@@ -19,24 +19,24 @@
       "mode": "direct",
       "threads": 16,
       "expected": 16000000,
-      "advanced": 6520524,
-      "lost": 9479476
+      "advanced": 7943184,
+      "lost": 8056816
     },
     {
       "mode": "direct",
       "threads": 16,
       "expected": 16000000,
-      "advanced": 5965823,
-      "lost": 10034177
+      "advanced": 8074421,
+      "lost": 7925579
     },
     {
       "mode": "direct",
       "threads": 16,
       "expected": 16000000,
-      "advanced": 6967440,
-      "lost": 9032560
+      "advanced": 9825784,
+      "lost": 6174216
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:25Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\ndirect: threads=1 expected 16000000 increments, counter advanced 16000000, lost 0\ndirect: threads=16 expected 16000000 increments, counter advanced 6520524, lost 9479476\ndirect: threads=16 expected 16000000 increments, counter advanced 5965823, lost 10034177\ndirect: threads=16 expected 16000000 increments, counter advanced 6967440, lost 9032560\n2026-10-14T18:16:27Z\n"
+  "raw_output": "2026-11-01T06:30:15Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\ndirect: threads=1 expected 16000000 increments, counter advanced 16000000, lost 0\ndirect: threads=16 expected 16000000 increments, counter advanced 7943184, lost 8056816\ndirect: threads=16 expected 16000000 increments, counter advanced 8074421, lost 7925579\ndirect: threads=16 expected 16000000 increments, counter advanced 9825784, lost 6174216\n2026-11-01T06:30:17Z\n"
 }

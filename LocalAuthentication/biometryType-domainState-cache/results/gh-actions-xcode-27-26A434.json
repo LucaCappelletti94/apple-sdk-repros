@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework LocalAuthentication repro.m -o repro",
   "strength": "dynamic-window",
   "runs": [
@@ -12,24 +12,24 @@
       "readers": 8,
       "writers": 4,
       "seconds": 5,
-      "calls": 1034,
-      "overlaps": 575
+      "calls": 578,
+      "overlaps": 278
     },
     {
       "readers": 8,
       "writers": 4,
       "seconds": 5,
-      "calls": 430,
-      "overlaps": 269
+      "calls": 467,
+      "overlaps": 261
     },
     {
       "readers": 8,
       "writers": 4,
       "seconds": 5,
-      "calls": 472,
-      "overlaps": 272
+      "calls": 540,
+      "overlaps": 344
     }
   ],
   "verdict": "window-detected",
-  "raw_output": "2026-10-14T18:16:05Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=4 seconds=5 calls=1034 overlaps=575\nreaders=8 writers=4 seconds=5 calls=430 overlaps=269\nreaders=8 writers=4 seconds=5 calls=472 overlaps=272\n2026-10-14T18:16:25Z\n"
+  "raw_output": "2026-11-01T06:29:54Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=4 seconds=5 calls=578 overlaps=278\nreaders=8 writers=4 seconds=5 calls=467 overlaps=261\nreaders=8 writers=4 seconds=5 calls=540 overlaps=344\n2026-11-01T06:30:13Z\n"
 }

@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation repro.m -o repro",
   "strength": "fault",
   "runs": [
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:00Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\nthread 1 got 0x104a8d680, thread 0 got 0x104a912e0\nthread 2 got 0x104a90410, thread 0 got 0x104a912e0\nthread 3 got 0x104a8d3b0, thread 0 got 0x104a912e0\nthread 4 got 0x104a8c120, thread 0 got 0x104a912e0\nthread 5 got 0x104a8d060, thread 0 got 0x104a912e0\nthread 6 got 0x104a8ce90, thread 0 got 0x104a912e0\nthread 7 got 0x104a8b860, thread 0 got 0x104a912e0\nDIVERGENCE: 7 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nwarm: all 8 threads got the same pointer 0x104d88c20\n2026-10-14T18:16:00Z\n"
+  "raw_output": "2026-11-01T06:29:49Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\nthread 1 got 0x10359d3d0, thread 0 got 0x10359d6a0\nthread 2 got 0x10359c140, thread 0 got 0x10359d6a0\nthread 3 got 0x1035a1600, thread 0 got 0x10359d6a0\nthread 4 got 0x10359d080, thread 0 got 0x10359d6a0\nthread 5 got 0x10359ceb0, thread 0 got 0x10359d6a0\nthread 6 got 0x10359b880, thread 0 got 0x10359d6a0\nthread 7 got 0x1035a15f0, thread 0 got 0x10359d6a0\nDIVERGENCE: 7 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nwarm: all 8 threads got the same pointer 0x1044f0a50\n2026-11-01T06:29:49Z\n"
 }

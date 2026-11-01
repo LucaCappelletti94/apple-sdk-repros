@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework QuartzCore -framework CoreGraphics repro.m -o repro",
   "strength": "fault",
   "runs": [
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:30Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ndiverged: 3 distinct pointers among 8\nrace warm rounds=1 exit=0\nagreed: 8 identical pointers (0x7972c04a80)\n2026-10-14T18:16:30Z\n"
+  "raw_output": "2026-11-01T06:30:21Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1 exit=1\ndiverged: 2 distinct pointers among 8\nrace warm rounds=1 exit=0\nagreed: 8 identical pointers (0x7571004af0)\n2026-11-01T06:30:21Z\n"
 }

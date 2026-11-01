@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation repro.m -o repro",
   "strength": "fault",
   "runs": [
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:02Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=2 exit=1\ndiverged: 7 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nall 8 threads agree on 0x104918a30\n2026-10-14T18:16:02Z\n"
+  "raw_output": "2026-11-01T06:29:51Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=2 exit=1\ndiverged: 2 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nall 8 threads agree on 0x104ccc8e0\n2026-11-01T06:29:51Z\n"
 }

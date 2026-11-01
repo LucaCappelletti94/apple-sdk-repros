@@ -4,14 +4,14 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework DeviceCheck repro.m -o repro",
   "strength": "fault",
   "runs": [
     {
       "mode": "cold",
       "rounds": 1000,
-      "exit_code": 139
+      "exit_code": 134
     },
     {
       "mode": "warm",
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:15:59Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1000 exit=139\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds\n2026-10-14T18:15:59Z\n"
+  "raw_output": "2026-11-01T06:29:48Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nrace cold rounds=1000 exit=134\n*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[DCDeviceMetadataDaemonConnection appAttestType]: unrecognized selector sent to instance 0x7ad302c460'\n*** First throw call stack:\n(\n\t0   CoreFoundation                      0x000000018b8a68c0 __exceptionPreprocess + 176\n\t1   libobjc.A.dylib                     0x000000018b30460c objc_exception_throw + 88\n\t2   CoreFoundation                      0x000000018b96ecac -[NSObject(NSObject) __retain_OA] + 0\n\t3   CoreFoundation                      0x000000018b813f70 ___forwarding___ + 1504\n\t4   CoreFoundation                      0x000000018b8138d0 __forwarding_prep_0___ + 96\n\t5   DeviceCheck                         0x00000002176d1350 -[DCAppAttestController isSupportedWithError:] + 236\n\t6   DeviceCheck                         0x00000002176cb908 -[DCAppAttestController isSupported] + 40\n\t7   DeviceCheck                         0x00000002176d3d84 -[DCAppAttestService isSupported] + 32\n\t8   repro                               0x0000000100550a00 worker + 96\n\t9   libsystem_pthread.dylib             0x000000018b775d00 _pthread_start + 136\n\t10  libsystem_pthread.dylib             0x000000018b770cec thread_start + 8\n)\nlibc++abi: terminating due to uncaught exception of type NSException\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds\n2026-11-01T06:29:48Z\n"
 }

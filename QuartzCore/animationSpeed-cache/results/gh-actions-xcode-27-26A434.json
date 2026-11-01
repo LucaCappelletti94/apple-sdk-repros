@@ -4,7 +4,7 @@
     "product_version": "27.0.1",
     "build": "26A434"
   },
-  "xcode_version": "27.0",
+  "xcode_version": "27.1",
   "command": "clang -O2 -fobjc-arc -framework Foundation -framework QuartzCore repro.m -o repro",
   "strength": "dynamic-window",
   "runs": [
@@ -80,5 +80,5 @@
     }
   ],
   "verdict": "window-detected",
-  "raw_output": "2026-10-14T18:16:27Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\n2026-10-14T18:16:28Z\n"
+  "raw_output": "2026-11-01T06:30:19Z\nProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\nreaders=8 writers=0 seconds=0 calls=8 overlaps=7\n2026-11-01T06:30:19Z\n"
 }

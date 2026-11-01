@@ -10,7 +10,7 @@
   "runs": [
     {
       "mode": "cold",
-      "rounds": 1,
+      "rounds": 2,
       "exit_code": 1
     },
     {
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:49Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ndiverged: 3 distinct pointers among 8\nrace warm rounds=1 exit=0\nagreed: 8 identical pointers (0x1029fd890)\n2026-10-14T18:16:49Z\n"
+  "raw_output": "2026-11-01T06:30:09Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=2 exit=1\ndiverged: 7 distinct pointers among 8\nrace warm rounds=1 exit=0\nagreed: 8 identical pointers (0x102dc5ce0)\n2026-11-01T06:30:09Z\n"
 }

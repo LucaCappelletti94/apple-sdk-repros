@@ -10,7 +10,7 @@
   "runs": [
     {
       "mode": "cold",
-      "rounds": 2,
+      "rounds": 1,
       "exit_code": 1
     },
     {
@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:16:06Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=2 exit=1\ndiverged: 7 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nall 8 threads agree on 0x1029ed0d0\n2026-10-14T18:16:06Z\n"
+  "raw_output": "2026-11-01T06:29:39Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ndiverged: 7 of 8 threads got a different pointer than thread 0\nrace warm rounds=1 exit=0\nall 8 threads agree on 0x100d2cff0\n2026-11-01T06:29:39Z\n"
 }

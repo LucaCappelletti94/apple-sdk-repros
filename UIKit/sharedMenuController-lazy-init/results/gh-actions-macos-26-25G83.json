@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:17:38Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ncold: distinct=8 exceptions=0\nrace warm rounds=1 exit=0\nwarm: distinct=1 exceptions=0\n2026-10-14T18:17:38Z\n"
+  "raw_output": "2026-11-01T06:30:49Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ncold: distinct=8 exceptions=0\nrace warm rounds=1 exit=0\nwarm: distinct=1 exceptions=0\n2026-11-01T06:30:49Z\n"
 }

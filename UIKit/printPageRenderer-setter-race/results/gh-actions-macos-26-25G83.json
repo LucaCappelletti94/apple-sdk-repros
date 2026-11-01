@@ -10,15 +10,15 @@
   "runs": [
     {
       "mode": "cold",
-      "rounds": 1000,
-      "exit_code": 0
+      "rounds": 10000,
+      "exit_code": 139
     },
     {
       "mode": "warm",
-      "rounds": 5000,
+      "rounds": 50000,
       "exit_code": 0
     }
   ],
-  "verdict": "not-reproduced",
-  "raw_output": "2026-10-14T18:17:35Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1000 exit=0\ncompleted 1000 rounds\nrace warm rounds=5000 exit=0\ncompleted 5000 rounds\n2026-10-14T18:17:35Z\n"
+  "verdict": "reproduced",
+  "raw_output": "2026-11-01T06:30:45Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=10000 exit=139\nrace warm rounds=50000 exit=0\ncompleted 50000 rounds\n2026-11-01T06:30:45Z\n"
 }

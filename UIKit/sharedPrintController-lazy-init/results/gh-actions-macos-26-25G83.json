@@ -20,5 +20,5 @@
     }
   ],
   "verdict": "reproduced",
-  "raw_output": "2026-10-14T18:17:40Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ndiverged: first callers of +[UIPrintInteractionController sharedPrintController] returned different objects\nrace warm rounds=1 exit=0\nwarm: all 8 threads agree\n2026-10-14T18:17:40Z\n"
+  "raw_output": "2026-11-01T06:30:51Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nrace cold rounds=1 exit=1\ndiverged: first callers of +[UIPrintInteractionController sharedPrintController] returned different objects\nrace warm rounds=1 exit=0\nwarm: all 8 threads agree\n2026-11-01T06:30:51Z\n"
 }

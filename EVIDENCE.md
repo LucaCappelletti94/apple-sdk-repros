@@ -6,6 +6,6 @@ Every `results/*.json` record carries a `strength` field, so the sitemap and the
 
 `dynamic-window`: instrumented code ran and directly observed the unsynchronized concurrent access itself, for example two threads' calls into methods known from disassembly to touch shared state without a lock overlapping in time. This proves the race condition is live in a running process. It does not prove the race corrupts anything, either because the consequence needs an architecture or build nothing available can run, or because the harness only measured the window rather than triggering the fault.
 
-`fault`: the actual externally visible defect occurred while running, a wrong answer, a crash, or observed corruption. This is the strongest level and the only one that needs no further qualification.
+`fault`: the actual externally visible defect occurred while running, a wrong answer, a crash, or observed corruption. A framework handing a caller a value its own header rules out, such as `NULL` for a parameter declared nonnull, is a wrong answer. This is the strongest level and the only one that needs no further qualification.
 
 A `strength` below `fault` is not a weaker version of the same claim, it is a different claim: that the hazard is real and live, not that it has been shown to break anything on the platform that produced the record. State the gap explicitly in the method's README rather than letting the `results/` table imply otherwise.

@@ -1,0 +1,10 @@
+2026-11-05T22:29:35Z
+ProductName:		macOS
+ProductVersion:		26.7.1
+BuildVersion:		25G241
+header old_result=not-nonnull new_result=not-nonnull
+repro exit=1
+changes=0x2 old=NULL new=set batch_complete=1
+changes=0x4 old=set new=NULL batch_complete=1
+added=1 added_with_null_old=1 removed=1 removed_with_null_new=1 other=0
+2026-11-05T22:29:41Z

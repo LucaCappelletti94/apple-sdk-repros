@@ -1,0 +1,25 @@
+{
+  "platform": "macos-vm-tart-macos-tahoe-base",
+  "os": {
+    "product_version": "26.6.2",
+    "build": "25G83"
+  },
+  "xcode_version": null,
+  "command": "clang -O2 -fobjc-arc -framework Foundation -framework Network repro.m -o repro",
+  "strength": "fault",
+  "header": {
+    "old_result": "nonnull",
+    "new_result": "nonnull"
+  },
+  "runs": [
+    {
+      "added": 1,
+      "added_with_null_old": 1,
+      "removed": 1,
+      "removed_with_null_new": 1,
+      "other": 0
+    }
+  ],
+  "verdict": "reproduced",
+  "raw_output": "2026-11-05T22:44:14Z\nProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\nheader old_result=nonnull new_result=nonnull\nrepro exit=1\nchanges=0x2 old=NULL new=set batch_complete=1\nchanges=0x4 old=set new=NULL batch_complete=1\nadded=1 added_with_null_old=1 removed=1 removed_with_null_new=1 other=0\n2026-11-05T22:44:20Z\n"
+}

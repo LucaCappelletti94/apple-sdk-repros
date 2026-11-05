@@ -16,7 +16,7 @@ One directory per method or bug, each with a standalone `repro.m`, a `README.md`
 | Foundation | [`+[NSScriptCoercionHandler sharedCoercionHandler]` lazy-init race](Foundation/sharedCoercionHandler-lazy-init/) | fault: reproduced | FB25188007 |
 | LocalAuthentication | [`-[LAContext biometryType]` / `-[LAContext domainState]` cached-pointer race](LocalAuthentication/biometryType-domainState-cache/) | dynamic-window: window-detected | FB25157119 |
 | LocalAuthentication | [`+[LAContext newInstanceId]` / `+[LAContext newCommandId]` counter race](LocalAuthentication/newInstanceId-newCommandId-race/) | fault: reproduced | FB25157108 |
-| Network | [`nw_browser_browse_results_changed_handler_t` nonnull results passed `NULL`](Network/browse-results-changed-handler-nullability/) | fault: reproduced | none filed |
+| Network | [`nw_browser_browse_results_changed_handler_t` nonnull results passed `NULL`](Network/browse-results-changed-handler-nullability/) | fault: reproduced | FB25452730 |
 | QuartzCore | [`+[CAAnimation defaultValueForKey:]` lazy-cache race](QuartzCore/animationSpeed-cache/) | dynamic-window: window-detected | FB25188025 |
 | QuartzCore | [`+[CAEmitterCell defaultValueForKey:]` lazy-init race](QuartzCore/emitterCellColor-cache/) | fault: reproduced | FB25188025 |
 | ScreenCaptureKit | [`-[SCContentSharingPicker defaultConfiguration]` lazy-init race](ScreenCaptureKit/defaultConfiguration-lazy-init/) | fault: reproduced | FB25187882 |

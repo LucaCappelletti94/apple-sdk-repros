@@ -1,6 +1,6 @@
 # `nw_browser_browse_results_changed_handler_t` nonnull results passed `NULL`
 
-Apple Feedback: not yet filed.
+Apple Feedback: FB25452730 (filed, open as of 2026-11-05, Apple has not replied).
 
 ## What this tests
 
@@ -31,7 +31,7 @@ Each record holds the header annotation from the probe (`nonnull` or `not-nonnul
 
 ## Platforms
 
-Reproduces on macOS 26.7.1 and on the iOS 17.5, 26.5 and 27.0 Simulators. Not yet run on macOS 15 or earlier.
+Reproduces on macOS 26.7.1 on the host, macOS 26.6.2 in a tart VM, and the iOS 17.5, 26.5 and 27.0 Simulators. Not yet run on macOS 15 or earlier.
 
 ## Results
 

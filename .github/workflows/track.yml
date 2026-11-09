@@ -1,12 +1,6 @@
 name: Track
 
 on:
-  schedule:
-    # Monthly, matching GitHub's own cadence for rebuilding the hosted
-    # macOS runner images (actions/runner-images: "we typically deploy
-    # weekly updates to the software on the runner images", so a monthly
-    # run is never re-checking a build it already checked, with margin).
-    - cron: "17 6 1 * *"
   workflow_dispatch: {}
 
 permissions:
